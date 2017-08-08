@@ -1,0 +1,65 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 61px; /* space for the top nav bar */
+}
+
+
+.row2{
+    margin-top: -8px !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-md-4{
+    height: auto
+}
+
+.data-container {
+    height: 1048px;
+}
+
+.viewer-container{
+    left: -15px;
+    height: 524px;
+}
+
+.secondviewer-container{
+    background: green;
+    height: 524px;
+}
+
+.piegraph-container{
+    background: blue;
+    height: 524px;
+}
+
+.bargraph-container{
+    background: black;
+    height: 524px;
+}
+
+
+/*#forgeViewer {
+    display: block;
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 400px;
+}*/
+
+.toolbarXLSButton {
+    background-image: url(/img/excel.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+

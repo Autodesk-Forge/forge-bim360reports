@@ -1,0 +1,28 @@
+{
+  "name": "visual.reports.sample",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "body-parser": "*",
+    "bootstrap": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "forge-apis": "^0.3.0",
+    "jquery": "*",
+    "jstree": "*",
+    "moment": "*",
+    "request": "^2.81.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node start.js",
+    "dev": "node start.js",
+    "nodemon": "nodemon start.js --ignore www/"
+  },
+  "author": "Jaime Rosales (Forge Partner Development)",
+  "license": "MIT"
+}

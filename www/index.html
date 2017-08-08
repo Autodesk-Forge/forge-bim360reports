@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visual Reports</title>
+  <!-- Common packages: JQuery & Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/jstree/style.css"/>
+  <link rel="shortcut icon" href=/img/favicon.ico type=image/x-icon>
+  <link rel="stylesheet" href="/css/main.css"/>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jstree.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+
+  <!-- Notification ballons -->
+  <script src="js/libraries/notify.min.js"></script>
+  
+  <!-- Autodesk Forge Viewer files -->
+  <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v2.15" type="text/css" />
+  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js"></script>
+  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=v2.15"></script>
+
+  <!-- BIM360 packages: login and authentication -->
+  <script src="/js/oauth.js"></script>
+  <script src="/js/forge.data.management.js"></script>
+  <script src="/js/forge.viewer.js"></script>
+ <!--  <script src="/js/xlsextension.js"></script>
+ -->
+ <!-- XLS related libraries -->
+  <script src="js/libraries/Blob.js"></script> <!-- https://github.com/eligrey/Blob.js -->
+  <script src="js/libraries/FileSaver.min.js"></script> <!-- https://github.com/eligrey/FileSaver.js -->
+  <script src="js/libraries/xlsx.core.min.js"></script> <!-- https://github.com/SheetJS/js-xlsx -->
+  <script src="js/ForgeXLS.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav left">
+      <li>
+        <a href="http://developer.autodesk.com" target="_blank">
+          <img alt="Autodesk Forge" src="/img/bim360.png" height="22" />
+          Visual Reports
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="#" id="Help" onclick="$('#about').modal('show');"><span class="glyphicon glyphicon-info-sign"></span>
+          <span id="infoText" title="About this Autodesk App">About</span></a>
+      </li>
+      <li>
+        <a href="#" id="BIMconfig" onclick="$('#provisionAccountModal').modal('show');" style="display: none"><span class="glyphicon glyphicon-cog"></span>
+          <span id="helpButtonText" title="Info on setting up BIM credentials">Config</span></a>
+      </li>
+      <li>
+        <a href="https://github.com/jaimerosales/bim360appstore-viewer-nodejs-visual.reports" id="github" ><svg id="i-github" viewBox="0 0 64 64" width="16" height="16">
+    <path stroke-width="0" fill="currentColor" d="M32 0 C14 0 0 14 0 32 0 53 19 62 22 62 24 62 24 61 24 60 L24 55 C17 57 14 53 13 50 13 50 13 49 11 47 10 46 6 44 10 44 13 44 15 48 15 48 18 52 22 51 24 50 24 48 26 46 26 46 18 45 12 42 12 31 12 27 13 24 15 22 15 22 13 18 15 13 15 13 20 13 24 17 27 15 37 15 40 17 44 13 49 13 49 13 51 20 49 22 49 22 51 24 52 27 52 31 52 42 45 45 38 46 39 47 40 49 40 52 L40 60 C40 61 40 62 42 62 45 62 64 53 64 32 64 14 50 0 32 0 Z" />
+</svg>
+          <span id="githubText" title="jump to github">GitHub</span></a>
+      </li>
+      <li>
+        <a href="#" id="signInButton"><span class="glyphicon glyphicon-user" id="signInProfileImage"></span>
+          <span id="signInButtonText" title="Sign in with your Autodesk Account">Sign in</span></a>
+      </li>
+    </ul>
+
+
+  </div>
+
+<!-- <div id="dataManagementHubs" class="col-md-4 data-container ">
+      <Button class="btn btn-lg btn-default" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
+    </div> -->
+
+</nav>
+<!-- End of navbar -->
+  <div class="row row2">
+    <div id="dataManagementHubs" class="col-md-4 data-container ">
+       <Button class="btn btn-lg btn-default" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
+    </div>
+    <div id="forgeViewer" class="col-md-4 viewer-container">
+    </div>
+    <div class="col-md-4 piegraph-container">
+    </div>
+    <div class="col-md-4 secondviewer-container">
+    </div>
+    <div class="col-md-4 bargraph-container">
+    </div>
+</div>
+<!-- Modal Provision BIM360  -->
+<div class="modal fade" id="provisionAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Thanks for using BIM Export to Excel App!</h4>
+      </div>
+      <div class="modal-body">
+        <p>To view your BIM 360 Docs files on this app please authorize my Forge Client ID with your BIM 360 Docs Account.</p>
+        <p>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#provisionAccountStepsModal">Show me the steps <span class="glyphicon glyphicon-new-window"></span></button>
+        </p>
+        Use this as Forge Client ID:
+        <div class="input-group">
+          <input type="text" readonly="true" aria-describedby="CopyClientID" id="ClientID" class="form-control" value="" />
+          <span class="input-group-addon" style="cursor: pointer" data-clipboard-target="#ClientID" id="CopyClientID">Copy to clipboard</span>
+        </div>
+        And this App Name:
+        <div class="input-group">
+          <input type="text" readonly="true" aria-describedby="CopyAppName" id="AppName" class="form-control" value="BIM Export to Excel" />
+          <span class="input-group-addon" style="cursor: pointer" data-clipboard-target="#AppName" id="CopyAppName">Copy to clipboard</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Provision BIM360 Help  -->
+<div class="modal fade" id="provisionAccountStepsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1">Step-by-step guide</h4>
+      </div>
+      <div class="modal-body">
+        <p>To access your BIM 360 Docs files with this app, you need to connect your BIM 360 account with the app.</p>
+        <ol>
+          <li>Log in to <a href="https://bim360enterprise.autodesk.com/" target="_blank">BIM 360 Account Administration</a>. Note that you need account administrator permissions.</li>
+          <li>If you have more than one account, select the account you want to integrate with the app.</li>
+          <li>From the toolbar, select <strong>SETTINGS &gt; Apps &amp; Integrations</strong>.<br/>
+            <img src="/img/Step1.png" width="500" /></li>
+          <li>Click the <strong>Add Integration</strong> button.<br />
+            <img src="/img/Step2.png" />
+          </li>
+          <li>Select <strong>BIM 360 Account Administration</strong> and <strong>BIM 360 Docs</strong>, and click <strong>Next</strong>.</li>
+          <li>Select <strong>I’m the developer</strong>, and click <strong>Next</strong>.</li>
+          <li>In the <strong>Forge Client ID</strong> and <strong>App Name</strong> fields, enter the Forge client ID and app name provided by the app retailer.</li>
+          <li>Select the <strong>I have saved the Account ID information securely</strong> checkbox.</li>
+          <li>Click <strong>Save</strong>.</br>
+            <img src="/img/Step3.png" width="500" />
+          </li>
+          <p></p>
+          <p>Congratulations! You can now access your BIM 360 Docs files.</p>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Understood, thanks!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About  -->
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">About, Contact and Instructions</h4>
+      </div>
+      <div class="modal-body">
+        <h4>About</h4>
+        <p>Developed by <a href="http://developer.autodesk.com">Forge Partner Development</a> team at Autodesk, Inc.</p>
+        <p>Get the <a href="https://github.com/wallabyway/bim360appstore-xls-exporter" target="_blank">source code</a>.</p>
+        <h4>Contact us</h4>
+        <p>Question? Suggestions? <a href="mailto:bim360apps@autodesk.com">Contact us</a> directly or see our <a href="https://github.com/wallabyway/bim360appstore-xls-exporter/issues" target="_blank">open issues</a>.</p>
+        <h4>Instructions</h4>
+        <ol>
+          <li>You need an account on <img src="img/autodesk_text.png" height="15"></li>
+          <li>Click the <strong>Sign in</strong> button to login</li>
+          <li>A folder tree will appear on the left.  Click the item to expand</li>  
+          <li>Navigate to a <strong>Revit file</strong> and click on a sub-item 'version' to view </li>
+          <li>The Revit model will appear in the right pane</li>
+            <li>Once you are viewing the file, click on the 'Excel export' <img src="img/excel.png" height="18">  toolbar button</li>
+          <li>Open the .XLSX file with Excel</li>
+          <ul>
+        </ol>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/800d2xmQl0s" frameborder="0" allowfullscreen=""></iframe></center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
