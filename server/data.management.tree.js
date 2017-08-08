@@ -5,6 +5,8 @@ var token = require('./token');
 var express = require('express');
 var router = express.Router();
 
+var moment = require('moment');
+
 // forge
 var forgeSDK = require('forge-apis');
 
@@ -172,7 +174,7 @@ function getFolderContents(projectId, folderId, tokenSession, res) {
     });
 }
 
-var moment = require('moment');
+
 
 function getVersions(projectId, itemId, tokenSession, res) {
   var items = new forgeSDK.ItemsApi();
@@ -186,9 +188,10 @@ function getVersions(projectId, itemId, tokenSession, res) {
         var dateFormated = (versions.body.data.length > 1 || days > 7 ? lastModifiedTime.format('MMM D, YYYY, h:mm a') : lastModifiedTime.fromNow());
         var designId = (version.relationships != null && version.relationships.derivatives != null ? version.relationships.derivatives.data.id : null);
         var fileName = version.attributes.fileName;
+        var versionst = version.id.match(/^(.*)\?version=(\d+)$/) [2];
         versionsForTree.push(prepareItemForTree(
           designId,
-          dateFormated + ' by ' + version.attributes.lastModifiedUserName,
+          decodeURI('v' + versionst + ': ' + dateFormated + ' by ' + version.attributes.lastModifiedUserName),
           'versions',
           false,
           fileType,
@@ -207,35 +210,6 @@ function getVersions(projectId, itemId, tokenSession, res) {
 
 function prepareItemForTree(_id, _text, _type, _children, _fileType, _fileName) {
   return { id: _id, text: _text, type: _type, children: _children, fileType:_fileType, fileName: _fileName };
-}
-
-
-var moment = require('moment');
-
-// Formats a list to JSTree structure
-function prepareArrayForJSTree(listOf, canHaveChildren, data) {
-  if (listOf == null) return '';
-  var treeList = [];
-  listOf.forEach(function (item, index) {
-
-    var szDate = item.attributes.lastModifiedTime;
-    if (!canHaveChildren) {
-      var lastModifiedTime = moment(item.attributes.lastModifiedTime);
-      var days = moment().diff(lastModifiedTime, 'days')
-      szDate = (listOf.length > 1 || days > 7 ? lastModifiedTime.format('MMM D, YYYY, h:mm a') : lastModifiedTime.fromNow());
-    }
-
-    var treeItem = {
-      id: item.links.self.href,
-      data: (item.relationships != null && item.relationships.derivatives != null ?
-        item.relationships.derivatives.data.id : null),
-      text: (item.type==='versions' ? szDate : item.attributes.displayName == null ? item.attributes.name : item.attributes.displayName),
-      type: item.type,
-      children: canHaveChildren
-    };
-    treeList.push(treeItem);
-  });
-  return treeList;
 }
 
 
