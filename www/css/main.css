@@ -6,6 +6,10 @@ body {
     padding-top: 61px; /* space for the top nav bar */
 }
 
+.btn-position{
+    margin-left: 25%;
+    margin-top: 90%
+}
 
 .row2{
     margin-top: -8px !important;
@@ -16,6 +20,14 @@ body {
 .col-md-4{
     height: auto
 }
+
+.widget{
+    height: 8%;
+    width: 107%;
+    margin-left: -15px;
+    background: red;
+}
+
 
 .data-container {
     height: 1048px;

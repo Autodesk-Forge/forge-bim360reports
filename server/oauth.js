@@ -97,14 +97,14 @@ router.get('/api/forge/callback/oauth', function (req, res) {
 
   // first get a full scope token for internal use (server-side)
   var req = new forgeSDK.AuthClientThreeLegged(config.credentials.client_id, config.credentials.client_secret, config.callbackURL, config.scopeInternal);
-  console.log(code);
+  //console.log(code);
   req.getToken(code)
     .then(function (internalCredentials) {
 
       tokenSession.setInternalCredentials(internalCredentials);
       tokenSession.setInternalOAuth(req);
 
-      console.log('Internal token (full scope): ' + internalCredentials.access_token); // debug
+      //console.log('Internal token (full scope): ' + internalCredentials.access_token); // debug
 
       // then refresh and get a limited scope token that we can send to the client
       var req2 = new forgeSDK.AuthClientThreeLegged(config.credentials.client_id, config.credentials.client_secret, config.callbackURL, config.scopePublic);
@@ -113,7 +113,7 @@ router.get('/api/forge/callback/oauth', function (req, res) {
           tokenSession.setPublicCredentials(publicCredentials);
           tokenSession.setPublicOAuth(req2);
 
-          console.log('Public token (limited scope): ' + publicCredentials.access_token); // debug
+          //console.log('Public token (limited scope): ' + publicCredentials.access_token); // debug
           res.redirect('/');
         })
         .catch(function (error) {

@@ -6,6 +6,7 @@
   <!-- Common packages: JQuery & Bootstrap -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/jstree/style.css"/>
+  <link rel="stylesheet" href="/css/nv.d3.css">
   <link rel="shortcut icon" href=/img/favicon.ico type=image/x-icon>
   <link rel="stylesheet" href="/css/main.css"/>
   <script src="/js/jquery.min.js"></script>
@@ -25,8 +26,15 @@
   <script src="/js/oauth.js"></script>
   <script src="/js/forge.data.management.js"></script>
   <script src="/js/forge.viewer.js"></script>
- <!--  <script src="/js/xlsextension.js"></script>
- -->
+  <script src="/js/LoadModels.js"></script>
+ <!--  <script src="/js/xlsextension.js"></script>-->
+ 
+  <script src="js/libraries/d3.min.js"></script>
+  <script src="js/libraries/d3pie.min.js"></script>
+  <script src="js/libraries/nv.d3.min.js"></script>
+  <script src="js/BarChart.js"></script>
+
+
  <!-- XLS related libraries -->
   <script src="js/libraries/Blob.js"></script> <!-- https://github.com/eligrey/Blob.js -->
   <script src="js/libraries/FileSaver.min.js"></script> <!-- https://github.com/eligrey/FileSaver.js -->
@@ -78,15 +86,18 @@
 <!-- End of navbar -->
   <div class="row row2">
     <div id="dataManagementHubs" class="col-md-4 data-container ">
-       <Button class="btn btn-lg btn-default" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
+       <Button class="btn btn-lg btn-default btn-position" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
     </div>
     <div id="forgeViewer" class="col-md-4 viewer-container">
     </div>
     <div class="col-md-4 piegraph-container">
+      <div class="widget"> Pie Chart </div>
     </div>
-    <div class="col-md-4 secondviewer-container">
+    <div id="viewerSecondary" class="col-md-4 secondviewer-container">
+      <div class="widget"> 2D Viewer </div>
     </div>
-    <div class="col-md-4 bargraph-container">
+    <div id="barChart" class="col-md-4 bargraph-container">
+      <div class="widget"> Bar Chart </div>
     </div>
 </div>
 <!-- Modal Provision BIM360  -->

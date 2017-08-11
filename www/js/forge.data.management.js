@@ -95,6 +95,7 @@ function prepareDataManagementTree() {
       if (data.node.id === 'not_available') { alert('No viewable available for this version'); return; }
       var parent_node = $('#dataManagementHubs').jstree(true).get_node(data.node.parent);
       launchViewer(data.node.id, parent_node.text, data.node.original.fileType);
+      //loadDocument(data.node.id)
       $.notify("loading... " + parent_node.text, { className: "info", position:"bottom right" });
     }
   });;
