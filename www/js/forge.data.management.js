@@ -89,14 +89,14 @@ function prepareDataManagementTree() {
       }
     },
     "plugins": 
-      ["types", "state", "sort", "contextmenu"]
+      ["types", "state", "sort"]
   }).bind("activate_node.jstree", function (evt, data) {
     if (data != null && data.node != null && data.node.type == 'versions') {
       if (data.node.id === 'not_available') { alert('No viewable available for this version'); return; }
       var parent_node = $('#dataManagementHubs').jstree(true).get_node(data.node.parent);
-      launchViewer(data.node.id, parent_node.text, data.node.original.fileType);
-      //loadDocument(data.node.id)
+      //launchViewer(data.node.id, parent_node.text, data.node.original.fileType);
+      launchViewer(data.node.id, 'forgeViewer', 'viewerSecondary');
       $.notify("loading... " + parent_node.text, { className: "info", position:"bottom right" });
     }
-  });;
+  });
 }

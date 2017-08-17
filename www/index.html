@@ -18,9 +18,9 @@
   <script src="js/libraries/notify.min.js"></script>
   
   <!-- Autodesk Forge Viewer files -->
-  <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v2.15" type="text/css" />
+  <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v2.16" type="text/css" />
   <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js"></script>
-  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=v2.15"></script>
+  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=v2.16"></script>
 
   <!-- BIM360 packages: login and authentication -->
   <script src="/js/oauth.js"></script>
@@ -33,13 +33,6 @@
   <script src="js/libraries/d3pie.min.js"></script>
   <script src="js/libraries/nv.d3.min.js"></script>
   <script src="js/BarChart.js"></script>
-
-
- <!-- XLS related libraries -->
-  <script src="js/libraries/Blob.js"></script> <!-- https://github.com/eligrey/Blob.js -->
-  <script src="js/libraries/FileSaver.min.js"></script> <!-- https://github.com/eligrey/FileSaver.js -->
-  <script src="js/libraries/xlsx.core.min.js"></script> <!-- https://github.com/SheetJS/js-xlsx -->
-  <script src="js/ForgeXLS.js"></script>
 
 </head>
 <body>
@@ -95,6 +88,7 @@
     </div>
     <div id="viewerSecondary" class="col-md-4 secondviewer-container">
       <div class="widget"> 2D Viewer </div>
+      <select id="list2dviews"></select>
     </div>
     <div id="barChart" class="col-md-4 bargraph-container">
       <div class="widget"> Bar Chart </div>
