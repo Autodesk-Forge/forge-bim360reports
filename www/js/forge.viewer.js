@@ -16,15 +16,9 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
 
-
-// This script file is based on the tutorial:
-// https://developer.autodesk.com/en/docs/viewer/v2/tutorials/basic-application/
-
 var viewer = {};
 viewer['3d'] = null;
 viewer['2d'] = null;
-
-var document;
 
 function launchViewer(urn, div3d, div2d) {
   var options = {
@@ -34,7 +28,6 @@ function launchViewer(urn, div3d, div2d) {
   var documentId = 'urn:' + urn;
   Autodesk.Viewing.Initializer(options, function onInitialized() {
     Autodesk.Viewing.Document.load(documentId, function (doc) {
-      //document = doc;
 
       showModel(doc, '3d', div3d);
       showModel(doc, '2d', div2d, function (viewables) {
@@ -91,7 +84,19 @@ function showSvf(doc, viewable, role) {
 
 function onDocumentLoadFailure(viewerErrorCode) {}
 
-function onLoadModelSuccess(model) {}
+var blockEvent = false;
+
+function onLoadModelSuccess(model) {
+  viewer[(model.is3d() ? '3d' : '2d')].addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, function (selection) {
+    if (blockEvent) return;
+    if (selection.dbIdArray.length == 0) return;
+    var role = (model.is3d() ? '2d' : '3d');
+    blockEvent = true;
+    viewer[role].select(selection.dbIdArray);
+    viewer[role].fitToView(selection.dbIdArray);
+    blockEvent = false;
+  });
+}
 
 function onLoadModelError(viewerErrorCode) {}
 
