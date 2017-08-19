@@ -22,10 +22,7 @@ body {
 }
 
 .widget{
-    height: 8%;
-    width: 107%;
-    margin-left: -15px;
-    background: red;
+    height: 8%;   
 }
 
 
@@ -39,8 +36,9 @@ body {
 }
 
 .secondviewer-container{
-    background: green;
-    height: 524px;
+    left: -15px;
+    height: 36em;
+    width: 33.1%;
 }
 
 .piegraph-container{
@@ -50,6 +48,7 @@ body {
 
 .bargraph-container{
     background: black;
+    left: 4px;
     height: 524px;
 }
 
