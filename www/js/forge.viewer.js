@@ -39,6 +39,7 @@ function launchViewer(urn, div3d, div2d) {
           // destroy and recreate the 2d view
           viewer['2d'].impl.unloadCurrentModel();
           viewer['2d'].tearDown();
+          viewer['2d'].finish();
           var viewerDiv = document.getElementById(div2d);
           viewer['2d'] = new Autodesk.Viewing.Private.GuiViewer3D(viewerDiv);
           var selected = this.value;
