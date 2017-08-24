@@ -37,7 +37,7 @@ function loadBarChart(lmvData) {
         barChart.height((lmvData.content.length + 2) * 15); // give each line 15px + add a header and footer
 
         var svg = d3.select("#barChart").append("svg")
-           .attr("height", "900");
+           .attr("height", "700");
 
         svg.datum(barCharData)
             .call(barChart);

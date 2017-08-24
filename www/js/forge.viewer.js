@@ -20,22 +20,30 @@ var viewer = {};
 viewer['3d'] = null;
 viewer['2d'] = null;
 
+function blankOutReportPane() {
+  $("#pieChart").empty();
+  $("#barChart").empty();
+  $("#list2dviews").empty();
+
+}
+
 function launchViewer(urn, div3d, div2d) {
+  blankOutReportPane()
   var options = {
     env: 'AutodeskProduction',
     getAccessToken: getForgeToken
   };
   var documentId = 'urn:' + urn;
   Autodesk.Viewing.Initializer(options, function onInitialized() {
-    Autodesk.Viewing.Document.load(documentId, function (doc) {
+    Autodesk.Viewing.Document.load(documentId, function(doc) {
 
       showModel(doc, '3d', div3d);
-      showModel(doc, '2d', div2d, function (viewables) {
+      showModel(doc, '2d', div2d, function(viewables) {
         var options = $("#list2dviews");
-        viewables.forEach(function (view) {
+        viewables.forEach(function(view) {
           options.append($("<option />").val(view.guid).text(view.name));
         });
-        options.change(function () {
+        options.change(function() {
           // destroy and recreate the 2d view
           viewer['2d'].impl.unloadCurrentModel();
           viewer['2d'].tearDown();
@@ -43,7 +51,7 @@ function launchViewer(urn, div3d, div2d) {
           var viewerDiv = document.getElementById(div2d);
           viewer['2d'] = new Autodesk.Viewing.Private.GuiViewer3D(viewerDiv);
           var selected = this.value;
-          viewables.forEach(function (view) {
+          viewables.forEach(function(view) {
             if (view.guid === selected)
               showSvf(doc, view, '2d');
           })
@@ -88,7 +96,7 @@ function onDocumentLoadFailure(viewerErrorCode) {}
 var blockEvent = false;
 
 function onLoadModelSuccess(model) {
-  viewer[(model.is3d() ? '3d' : '2d')].addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, function (selection) {
+  viewer[(model.is3d() ? '3d' : '2d')].addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, function(selection) {
     if (blockEvent) return;
     if (selection.dbIdArray.length == 0) return;
     var role = (model.is3d() ? '2d' : '3d');
@@ -97,6 +105,19 @@ function onLoadModelSuccess(model) {
     viewer[role].fitToView(selection.dbIdArray);
     blockEvent = false;
   });
+
+  // when the geometry is loaded, automatically run the first report
+
+  disableReportMenu();
+  viewer['3d'].addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, function(event) {
+    //alert('geom loaded');
+    enableReportMenu();
+    //runReport(-1);   // run the currently selected report (the first one if this is the first model loaded, current one if loading a subsequent model)
+
+    $("#tab_button_1").click();
+    startReportDataLoader(viewer['3d'], viewer['2d'], runReport);
+  });
+
 }
 
 function onLoadModelError(viewerErrorCode) {}
@@ -104,7 +125,7 @@ function onLoadModelError(viewerErrorCode) {}
 function getForgeToken() {
   jQuery.ajax({
     url: '/user/token',
-    success: function (res) {
+    success: function(res) {
       token = res;
     },
     async: false

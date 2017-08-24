@@ -11,66 +11,64 @@ body {
     margin-top: 90%
 }
 
-.row2{
-    margin-top: -8px !important;
-    margin-left: 0;
-    margin-right: 0;
+#pieChart{
+    margin-top: 10%;
 }
 
-.col-md-4{
-    height: auto
+#barChart{
+    margin-top: 15%;
 }
-
-.widget{
-    height: 8%;   
-}
-
 
 .data-container {
-    height: 1048px;
-}
-
-.viewer-container{
-    left: -15px;
-    height: 524px;
-}
-
-.secondviewer-container{
-    left: -15px;
-    height: 36em;
-    width: 33.1%;
-}
-
-.piegraph-container{
-    background: blue;
-    height: 524px;
-}
-
-.bargraph-container{
-    background: black;
-    left: 4px;
-    height: 523px;
+    height: 100% !important;
+    width: 30%;
 }
 
 
-/*#forgeViewer {
+#forgeViewer {
+    height: 47% !important;
+    width: 45% !important;
     display: block;
     position: absolute;
-    height: 50%;
     bottom: 0;
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 50px;
+    margin-top: 2%;
     margin-bottom: 0px;
     margin-right: 0px;
-    margin-left: 400px;
-}*/
-
-.toolbarXLSButton {
-    background-image: url(/img/excel.png);
-    background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
+    margin-left: 25%;
+    background-color: #bcbcbc;
 }
 
+#viewerSecondary {
+    height: 47% !important;
+    width: 45% !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 27%;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 25%;
+    background-color: #bcbcbc;
+}
+
+
+#positionCharts {
+    height: 96% !important;
+    width: 25% !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 5%;
+    left: 75%;
+    right: 0;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    
+   
+}

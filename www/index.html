@@ -22,17 +22,17 @@
   <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js"></script>
   <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=v2.16"></script>
 
+  <script src="/js/libraries/d3.min.js"></script>
+  <script src="/js/libraries/d3pie.min.js"></script>
+  <script src="/js/libraries/nv.d3.min.js"></script>
+
   <!-- BIM360 packages: login and authentication -->
   <script src="/js/oauth.js"></script>
   <script src="/js/forge.data.management.js"></script>
-  <script src="/js/forge.viewer.js"></script>
-  <script src="/js/LoadModels.js"></script>
- <!--  <script src="/js/xlsextension.js"></script>-->
- 
-  <script src="js/libraries/d3.min.js"></script>
-  <script src="js/libraries/d3pie.min.js"></script>
-  <script src="js/libraries/nv.d3.min.js"></script>
-  <script src="js/BarChart.js"></script>
+  <script src="/js/forge.viewer.js"></script> 
+  <script src="/js/reportData.js"></script>
+  <script src="/js/barchart.js"></script>
+  <script src="/js/piechart.js"></script>
 
 </head>
 <body>
@@ -57,9 +57,7 @@
           <span id="helpButtonText" title="Info on setting up BIM credentials">Config</span></a>
       </li>
       <li>
-        <a href="https://github.com/jaimerosales/bim360appstore-viewer-nodejs-visual.reports" id="github" ><svg id="i-github" viewBox="0 0 64 64" width="16" height="16">
-    <path stroke-width="0" fill="currentColor" d="M32 0 C14 0 0 14 0 32 0 53 19 62 22 62 24 62 24 61 24 60 L24 55 C17 57 14 53 13 50 13 50 13 49 11 47 10 46 6 44 10 44 13 44 15 48 15 48 18 52 22 51 24 50 24 48 26 46 26 46 18 45 12 42 12 31 12 27 13 24 15 22 15 22 13 18 15 13 15 13 20 13 24 17 27 15 37 15 40 17 44 13 49 13 49 13 51 20 49 22 49 22 51 24 52 27 52 31 52 42 45 45 38 46 39 47 40 49 40 52 L40 60 C40 61 40 62 42 62 45 62 64 53 64 32 64 14 50 0 32 0 Z" />
-</svg>
+        <a href="https://github.com/jaimerosales/bim360appstore-viewer-nodejs-visual.reports" id="github" >
           <span id="githubText" title="jump to github">GitHub</span></a>
       </li>
       <li>
@@ -77,22 +75,51 @@
 
 </nav>
 <!-- End of navbar -->
-  <div class="row row2">
-    <div id="dataManagementHubs" class="col-md-4 data-container ">
-       <Button class="btn btn-lg btn-default btn-position" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
-    </div>
-    <div id="forgeViewer" class="col-md-4 viewer-container">
-    </div>
-    <div class="col-md-4 piegraph-container">
-      <div class="widget"> Pie Chart </div>
-    </div>
-    <div id="viewerSecondary" class="col-md-4 secondviewer-container">
-      2D Viewer <select id="list2dviews"></select> 
-    </div>
-    <div id="barChart" class="col-md-4 bargraph-container">
-      <div class="widget"> Bar Chart </div>
-    </div>
+
+<div class="container-fluid">
+      <div class="row data-container">
+        <div class="col-sm-3 col-md-2 sidebar " id="dataManagementHubs">
+          <Button class="btn btn-lg btn-default btn-position" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
+        </div>
+      </div>
+      <div class="row" >
+        <div id="forgeViewer" > 
+        </div> 
+      </div>
+      <div class="row" >
+        <div id="viewerSecondary" > 
+          2D Viewer <select id="list2dviews"></select>
+        </div> 
+      </div>
+      <div class="row" >
+        <div id="positionCharts"> 
+          <div class="tab-panel active" id="tab_panel_1">
+            <label for="pu_reportToRun">Report</label>
+              <select id="pu_reportToRun" class="select-light" name="reportToRun" disabled>
+              <!-- Options filled in by function in Report_PieChart.js -->
+              </select>
+            <label for="pu_sortOrder">Sort Order</label>
+            <select id="pu_sortOrder" class="select-light" name="sortOrder" disabled>
+                <option value="value-asc">Value - Ascending</option>
+                <option value="value-desc" selected="selected">Value - Descending</option>
+                <option value="label-asc">Label - Ascending</option>
+                <option value="label-desc">Label - Descending</option>
+                <option value="random">Random</option>
+            </select>
+            <div id="reportinput"></div>
+            <div class="svgcanvas">
+              <div id="pieChart">
+              </div>
+              <div id="barChart">
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+
 </div>
+
+
 <!-- Modal Provision BIM360  -->
 <div class="modal fade" id="provisionAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
