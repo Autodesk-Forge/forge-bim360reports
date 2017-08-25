@@ -24,8 +24,24 @@ function blankOutReportPane() {
   $("#pieChart").empty();
   $("#barChart").empty();
   $("#list2dviews").empty();
+  $("#viewerSecondary").empty();
+  $("#forgeViewer").empty();
 
 }
+
+function blankOutViewers() {
+  // viewer['3d'].impl.unloadCurrentModel();
+  // viewer['3d'].tearDown();
+  // viewer['3d'].finish();
+
+  // viewer['2d'].impl.unloadCurrentModel();
+  // viewer['2d'].tearDown();
+  // viewer['2d'].finish();
+
+  console.log('Viewer 3D', viewer['3d'])
+  console.log('Viewer 2D', viewer['2d'])
+}
+
 
 function launchViewer(urn, div3d, div2d) {
   blankOutReportPane()
@@ -37,6 +53,8 @@ function launchViewer(urn, div3d, div2d) {
   Autodesk.Viewing.Initializer(options, function onInitialized() {
     Autodesk.Viewing.Document.load(documentId, function(doc) {
       // clear both viewers
+       
+
       showModel(doc, '3d', div3d);
       showModel(doc, '2d', div2d, function(viewables) {
         var options = $("#list2dviews");
@@ -69,7 +87,16 @@ function showModel(doc, role, div, callback) {
     'role': role
   }, true);
   if (viewables.length === 0) {
-    console.error('Document contains no viewables.');
+    if (role === '3d'){
+      $("#forgeViewer").append("<h2><em>There is no viewables available for 3D models</em></h2>")
+      $("#pieChart").append("<p><em>No data could be retrieved for charts.  This report is probably not applicable for the given model.  As an example, Revit models can be sorted by Type or Level, but Fusion models cannot.  Fusion models are more appropriate for reports sorted by Mass, Volume, or Material.  Try switching to a different report or a different model.</em></p>");
+
+    } else {
+      $("#viewerSecondary").append("<h2><em>There is no viewables available for 2D models</em></h2>")
+      $("#pieChart").append("<p><em>No data could be retrieved for charts.  This report is probably not applicable for the given model.  As an example, Revit models can be sorted by Type or Level, but Fusion models cannot.  Fusion models are more appropriate for reports sorted by Mass, Volume, or Material.  Try switching to a different report or a different model.</em></p>");
+
+    }
+    //console.error('Document contains no viewables.');
     return;
   }
 
