@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -13,15 +14,18 @@ body {
 
 #pieChart{
     margin-top: 10%;
+    margin-left: -5%
 }
 
 #barChart{
-    margin-top: 15%;
+    margin-top: 10%;
+    margin-left: -6%;
 }
 
 .data-container {
-    height: 100% !important;
-    width: 30%;
+    height: calc(100vh - 100px);
+    width: calc(27vw - 50px);
+    overflow: auto;
 }
 
 
@@ -69,6 +73,5 @@ body {
     right: 0;
     margin-bottom: 0px;
     margin-right: 0px;
-    
    
 }

@@ -36,7 +36,7 @@ function launchViewer(urn, div3d, div2d) {
   var documentId = 'urn:' + urn;
   Autodesk.Viewing.Initializer(options, function onInitialized() {
     Autodesk.Viewing.Document.load(documentId, function(doc) {
-
+      // clear both viewers
       showModel(doc, '3d', div3d);
       showModel(doc, '2d', div2d, function(viewables) {
         var options = $("#list2dviews");
@@ -108,15 +108,17 @@ function onLoadModelSuccess(model) {
 
   // when the geometry is loaded, automatically run the first report
 
-  disableReportMenu();
-  viewer['3d'].addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, function(event) {
-    //alert('geom loaded');
-    enableReportMenu();
-    //runReport(-1);   // run the currently selected report (the first one if this is the first model loaded, current one if loading a subsequent model)
+  if (model.is3d()) {
+    disableReportMenu();
+    viewer['3d'].addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, function(event) {
+      enableReportMenu();
+      //runReport(-1);   // run the currently selected report (the first one if this is the first model loaded, current one if loading a subsequent model)
+      $("#tab_button_1").click();
+      startReportDataLoader(viewer['3d'], viewer['2d'], runReport);
+    });
 
-    $("#tab_button_1").click();
-    startReportDataLoader(viewer['3d'], viewer['2d'], runReport);
-  });
+  }
+
 
 }
 
