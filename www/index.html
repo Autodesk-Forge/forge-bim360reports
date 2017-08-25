@@ -123,7 +123,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thanks for using BIM Export to Excel App!</h4>
+        <h4 class="modal-title">Thanks for using BIM Visual Report App!</h4>
       </div>
       <div class="modal-body">
         <p>To view your BIM 360 Docs files on this app please authorize my Forge Client ID with your BIM 360 Docs Account.</p>
@@ -137,7 +137,7 @@
         </div>
         And this App Name:
         <div class="input-group">
-          <input type="text" readonly="true" aria-describedby="CopyAppName" id="AppName" class="form-control" value="BIM Export to Excel" />
+          <input type="text" readonly="true" aria-describedby="CopyAppName" id="AppName" class="form-control" value="BIM Visual Report" />
           <span class="input-group-addon" style="cursor: pointer" data-clipboard-target="#AppName" id="CopyAppName">Copy to clipboard</span>
         </div>
       </div>
@@ -160,6 +160,7 @@
         <p>To access your BIM 360 Docs files with this app, you need to connect your BIM 360 account with the app.</p>
         <ol>
           <li>Log in to <a href="https://bim360enterprise.autodesk.com/" target="_blank">BIM 360 Account Administration</a>. Note that you need account administrator permissions.</li>
+          <li>To request permission access for the integration follow this blog post <a href="https://fieldofviewblog.wordpress.com/2017/08/18/no-apps-integrations-tab/" target="_blank"> Request Apps and Integrations</a></li>
           <li>If you have more than one account, select the account you want to integrate with the app.</li>
           <li>From the toolbar, select <strong>SETTINGS &gt; Apps &amp; Integrations</strong>.<br/>
             <img src="/img/Step1.png" width="500" /></li>
@@ -196,18 +197,20 @@
       <div class="modal-body">
         <h4>About</h4>
         <p>Developed by <a href="http://developer.autodesk.com">Forge Partner Development</a> team at Autodesk, Inc.</p>
-        <p>Get the <a href="https://github.com/wallabyway/bim360appstore-xls-exporter" target="_blank">source code</a>.</p>
+        <p>Get the <a href="https://github.com/augustogoncalves/bim360appstore-viewer-nodejs-visual.reports" target="_blank">source code</a>.</p>
         <h4>Contact us</h4>
-        <p>Question? Suggestions? <a href="mailto:bim360apps@autodesk.com">Contact us</a> directly or see our <a href="https://github.com/wallabyway/bim360appstore-xls-exporter/issues" target="_blank">open issues</a>.</p>
+        <p>Question? Suggestions? <a href="mailto:bim360apps@autodesk.com">Contact us</a> directly or see our <a href="https://github.com/augustogoncalves/bim360appstore-viewer-nodejs-visual.reports/issues" target="_blank">open issues</a>.</p>
         <h4>Instructions</h4>
         <ol>
           <li>You need an account on <img src="img/autodesk_text.png" height="15"></li>
           <li>Click the <strong>Sign in</strong> button to login</li>
           <li>A folder tree will appear on the left.  Click the item to expand</li>  
           <li>Navigate to a <strong>Revit file</strong> and click on a sub-item 'version' to view </li>
-          <li>The Revit model will appear in the right pane</li>
-            <li>Once you are viewing the file, click on the 'Excel export' <img src="img/excel.png" height="18">  toolbar button</li>
-          <li>Open the .XLSX file with Excel</li>
+          <li>Top Viewer will load Revit 3D model</li>
+          <li>Bottom Viewer will load Revit 2D sheets which all can be access from the Viewer 2D dropdown menu</li>
+          <li>On the 3rd column a Visual Report will appear using D3.js and the metadata from the Revit model</li>
+          <li>On click of either the Pie Chart or the Bar Chart it will isolate the selected category in both viewers</li>
+          <li>Click again to deselect and show all</li>
           <ul>
         </ol>
         <center><iframe width="560" height="315" src="https://www.youtube.com/embed/800d2xmQl0s" frameborder="0" allowfullscreen=""></iframe></center>
