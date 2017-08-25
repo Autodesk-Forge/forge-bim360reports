@@ -13,19 +13,35 @@ body {
 }
 
 #pieChart{
-    margin-top: 10%;
-    margin-left: -5%
+    margin-top: 0vh;
+    margin-left: -3vw
 }
 
 #barChart{
-    margin-top: 10%;
-    margin-left: -6%;
+    margin-top: 0vh;
+    margin-left: -5vw;
 }
 
 .data-container {
     height: calc(100vh - 100px);
     width: calc(27vw - 50px);
     overflow: auto;
+}
+
+#dropdown2dviews {
+    height: 2%;
+    width: 20% !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 51vh;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 25%;
+    z-index: 2;
 }
 
 
@@ -54,7 +70,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 27%;
+    margin-top: 53vh;
     margin-bottom: 0px;
     margin-right: 0px;
     margin-left: 25%;

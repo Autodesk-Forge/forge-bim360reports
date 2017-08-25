@@ -19,7 +19,7 @@
   
   <!-- Autodesk Forge Viewer files -->
   <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v2.16" type="text/css" />
-  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js"></script>
+  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js?v=v2.16"></script>
   <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=v2.16"></script>
 
   <script src="/js/libraries/d3.min.js"></script>
@@ -57,7 +57,7 @@
           <span id="helpButtonText" title="Info on setting up BIM credentials">Config</span></a>
       </li>
       <li>
-        <a href="https://github.com/jaimerosales/bim360appstore-viewer-nodejs-visual.reports" id="github" >
+        <a href="https://github.com/augustogoncalves/bim360appstore-viewer-nodejs-visual.reports" id="github" >
           <span id="githubText" title="jump to github">GitHub</span></a>
       </li>
       <li>
@@ -68,11 +68,6 @@
 
 
   </div>
-
-<!-- <div id="dataManagementHubs" class="col-md-4 data-container ">
-      <Button class="btn btn-lg btn-default" style="margin-left:5px" onclick="forgeSignIn()"><img src="img/autodesk_text.png" height="20px"/> Sign in</Button>
-    </div> -->
-
 </nav>
 <!-- End of navbar -->
 
@@ -87,8 +82,10 @@
         </div> 
       </div>
       <div class="row" >
+        <div id="dropdown2dviews">
+          2D Viewer  <select id="list2dviews"></select>
+        </div>
         <div id="viewerSecondary" > 
-          2D Viewer <select id="list2dviews"></select>
         </div> 
       </div>
       <div class="row" >
