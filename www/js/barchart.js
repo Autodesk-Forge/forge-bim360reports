@@ -62,6 +62,8 @@ function loadBarChart(lmvData) {
         barChart.yAxis.axisLabel("Quantity").tickFormat(d3.format("d"));
         d3.selectAll('svg .nv-bar').on('click', handleBarClick);
 
+        nv.utils.windowResize(barChart.update);
+
         return barChart;
     });
 }

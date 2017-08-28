@@ -13,13 +13,11 @@ body {
 }
 
 #pieChart{
-    margin-top: 0vh;
-    margin-left: -3vw
+    
 }
 
 #barChart{
-    margin-top: 3vh;
-    margin-left: -6vw;
+    
 }
 
 .data-container {
@@ -28,9 +26,16 @@ body {
     overflow: auto;
 }
 
+.report-dropdowns {
+    
+}
+
+.sort-dropdowns {
+}
+
 #dropdown2dviews {
     height: 2%;
-    width: 25% !important;
+    width: 45% !important;
     display: block;
     position: absolute;
     bottom: 0;
@@ -79,15 +84,12 @@ body {
 
 
 #positionCharts {
-    height: 96vh !important;
-    width: 25vw !important;
+    /*height: 96vh !important;
+    width: 25vw !important;*/
     display: block;
     position: absolute;
     bottom: 0;
-    top: 5%;
-    left: 75%;
+    top: 6%;
+    left: 72%;
     right: 0;
-    margin-bottom: 0px;
-    margin-right: 0px;
-   
 }

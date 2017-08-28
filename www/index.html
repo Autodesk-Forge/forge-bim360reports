@@ -91,11 +91,11 @@
       <div class="row" >
         <div id="positionCharts"> 
           <div class="tab-panel active" id="tab_panel_1">
-            <label for="pu_reportToRun">Report</label>
+            <label for="pu_reportToRun" class="report-dropdowns">Report</label>
               <select id="pu_reportToRun" class="select-light" name="reportToRun" disabled>
               <!-- Options filled in by function in Report_PieChart.js -->
               </select>
-            <label for="pu_sortOrder">Sort Order</label>
+            <label for="pu_sortOrder" class="sort-dropdowns">Sort Order</label>
             <select id="pu_sortOrder" class="select-light" name="sortOrder" disabled>
                 <option value="value-asc">Value - Ascending</option>
                 <option value="value-desc" selected="selected">Value - Descending</option>
@@ -103,7 +103,7 @@
                 <option value="label-desc">Label - Descending</option>
                 <option value="random">Random</option>
             </select>
-            <div id="reportinput"></div>
+            
             <div class="svgcanvas">
               <div id="pieChart">
               </div>

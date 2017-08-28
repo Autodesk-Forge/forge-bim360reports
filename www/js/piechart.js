@@ -240,18 +240,20 @@ function initPieOpts(fieldName, reportIndex) {
 
 function initPieDefaults(fieldName) {
     var strSubTitle = "Quantities in model (" + fieldName + ")";
+
+
     var pieDefaults = {
         "header": {
             "title": {
                 "text": fieldName,
-                "fontSize": 24,
-                "font": "open sans"
+                "fontSize": 34,
+                "font": "courier"
             },
             "subtitle": {
                 "text": strSubTitle,
                 "color": "#999999",
-                "fontSize": 12,
-                "font": "open sans"
+                "fontSize": 10,
+                "font": "courier"
             },
             "titleSubtitlePadding": 9
         },
@@ -263,16 +265,15 @@ function initPieDefaults(fieldName) {
         },
         "size": {
             "canvasWidth": 590,
-            "pieInnerRadius": "39%",
-            "pieOuterRadius": "67%"
+            "pieInnerRadius": "43%",
+            "pieOuterRadius": "71%"
         },
         "labels": {
             "outer": {
-                "pieDistance": 25
+                "pieDistance": 32
             },
             "inner": {
-                "hideWhenLessThanPercentage": 3,
-                "format": "value"
+                "hideWhenLessThanPercentage": 3
             },
             "mainLabel": {
                 "fontSize": 11
@@ -293,11 +294,6 @@ function initPieDefaults(fieldName) {
                 "truncateLength": 30
             }
         },
-        "tooltips": {
-            "enabled": true,
-            "type": "placeholder",
-            "string": "{label}: {value}, {percentage}%"
-        },
         "effects": {
             "pullOutSegmentOnClick": {
                 "effect": "linear",
@@ -315,9 +311,9 @@ function initPieDefaults(fieldName) {
             onClickSegment: clickPieWedge
         }
     };
-
     return pieDefaults;
 }
+
 
 var _selectedWedge;
 
