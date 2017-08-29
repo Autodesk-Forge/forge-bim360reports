@@ -96,6 +96,8 @@ function prepareDataManagementTree() {
       var parent_node = $('#dataManagementHubs').jstree(true).get_node(data.node.parent);
       launchViewer(data.node.id, 'forgeViewer', 'viewerSecondary');
       $.notify("loading... " + parent_node.text, { className: "info", position:"bottom right" });
+      $(".report-dropdowns").css('visibility', 'visible');
+      $("#dropdown2dviews").css('visibility', 'visible');
     }
   });
 }

@@ -21,16 +21,19 @@ body {
 }
 
 .data-container {
-    height: calc(100vh - 100px);
-    width: calc(27vw - 50px);
+    height: calc(100vh - 61px);
+    width: calc(27vw - 34px);
     overflow: auto;
 }
 
 .report-dropdowns {
-    
+    margin-left: 8%; 
+    visibility: hidden;   
 }
 
-.sort-dropdowns {
+
+.svgcanvas{
+    margin-left: 5%;
 }
 
 #dropdown2dviews {
@@ -47,11 +50,12 @@ body {
     margin-right: 0px;
     margin-left: 25%;
     z-index: 2;
+    visibility: hidden;
 }
 
 
 #forgeViewer {
-    height: 47vh !important;
+    height: 46vh !important;
     width: 45vw !important;
     display: block;
     position: absolute;
@@ -59,7 +63,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 2%;
+    margin-top: 4vh;
     margin-bottom: 0px;
     margin-right: 0px;
     margin-left: 25%;
@@ -67,7 +71,7 @@ body {
 }
 
 #viewerSecondary {
-    height: 47vh !important;
+    height: 46vh !important;
     width: 45vw !important;
     display: block;
     position: absolute;
@@ -75,7 +79,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 53vh;
+    margin-top: 54vh;
     margin-bottom: 0px;
     margin-right: 0px;
     margin-left: 25%;
@@ -90,6 +94,6 @@ body {
     position: absolute;
     bottom: 0;
     top: 6%;
-    left: 72%;
+    width: 33%;
     right: 0;
 }
