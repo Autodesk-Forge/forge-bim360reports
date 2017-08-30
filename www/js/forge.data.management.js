@@ -42,6 +42,7 @@ function prepareDataManagementTree() {
           $('#dataManagementHubs').jstree(true).toggle_node(node);
           return {"id": node.id};
         },
+        "cache" : false,
         "success": function (nodes) {
           nodes.forEach(function (n) {
             if (n.type === 'bim360hubs' && n.id.indexOf('b.') > 0)

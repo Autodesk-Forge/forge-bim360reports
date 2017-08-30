@@ -72,6 +72,10 @@ html, body {
     overflow: hidden;
 }
 
+body {
+    padding-top: 4%; /* space for the top nav bar */
+}
+
 svg{
     width: 530px !important;
     height: 490px !important;
