@@ -2,6 +2,11 @@ body {
     padding-top: 3%; /* space for the top nav bar */
 }
 
+#pieChart > p{
+    margin-left: 50px;
+    width: 40%;
+    padding-top: 15px;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
@@ -74,7 +79,7 @@ html, body {
 }
 
 body {
-    padding-top: 4%; /* space for the top nav bar */
+    padding-top: 3%; /* space for the top nav bar */
 }
 
 svg{

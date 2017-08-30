@@ -95,10 +95,11 @@ function prepareDataManagementTree() {
     if (data != null && data.node != null && data.node.type == 'versions') {
       if (data.node.id === 'not_available') { alert('No viewable available for this version'); return; }
       var parent_node = $('#dataManagementHubs').jstree(true).get_node(data.node.parent);
-      launchViewer(data.node.id, 'forgeViewer', 'viewerSecondary');
-      $.notify("loading... " + parent_node.text, { className: "info", position:"bottom right" });
       $(".report-dropdowns").css('visibility', 'visible');
       $("#dropdown2dviews").css('visibility', 'visible');
+      launchViewer(data.node.id, 'forgeViewer', 'viewerSecondary');
+      $.notify("loading... " + parent_node.text, { className: "info", position:"bottom right" });
+      
     }
   });
 }

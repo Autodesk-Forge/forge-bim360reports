@@ -19,6 +19,7 @@
 var viewer = {};
 viewer['3d'] = null;
 viewer['2d'] = null;
+var flagModel = false;
 
 function blankOutReportPane() {
   $("#pieChart").empty();
@@ -26,7 +27,23 @@ function blankOutReportPane() {
   $("#list2dviews").empty();
   $("#viewerSecondary").empty();
   $("#forgeViewer").empty();
+}
 
+function blankOutReportPane3d() {
+  $("#pieChart").empty();
+  $("#barChart").empty();
+  $("#forgeViewer").empty();
+  $(".report-dropdowns").css('visibility', 'hidden');
+  $("#dropdown2dviews").css('visibility', 'hidden');
+}
+
+function blankOutReportPane2d() {
+  $("#pieChart").empty();
+  $("#barChart").empty();
+  $("#list2dviews").empty();
+  $("#viewerSecondary").empty();
+  $(".report-dropdowns").css('visibility', 'hidden');
+  $("#dropdown2dviews").css('visibility', 'hidden');
 }
 
 function launchViewer(urn, div3d, div2d) {
@@ -71,12 +88,16 @@ function showModel(doc, role, div, callback) {
     'role': role
   }, true);
   if (viewables.length === 0) {
-    blankOutReportPane()
+    
     if (role === '3d'){
+      blankOutReportPane3d()
+      flagModel = true;
       $("#forgeViewer").append("<h2><em>There is no viewables available for 3D models</em></h2>")
       $("#pieChart").append("<p><em>No data could be retrieved for charts.  This report is probably not applicable for the given model.  As an example, Revit models can be sorted by Type or Level, but Fusion models cannot.  Fusion models are more appropriate for reports sorted by Mass, Volume, or Material.  Try switching to a different report or a different model.</em></p>");
 
     } else {
+      blankOutReportPane2d()
+      flagModel = true;
       $("#viewerSecondary").append("<h2><em>There is no viewables available for 2D models</em></h2>")
       $("#pieChart").append("<p><em>No data could be retrieved for charts.  This report is probably not applicable for the given model.  As an example, Revit models can be sorted by Type or Level, but Fusion models cannot.  Fusion models are more appropriate for reports sorted by Mass, Volume, or Material.  Try switching to a different report or a different model.</em></p>");
 
@@ -85,6 +106,7 @@ function showModel(doc, role, div, callback) {
     return;
   }
 
+  flagModel = false;
   var viewerDiv = document.getElementById(div);
   viewer[role] = new Autodesk.Viewing.Private.GuiViewer3D(viewerDiv);
 
@@ -120,7 +142,7 @@ function onLoadModelSuccess(model) {
 
   // when the geometry is loaded, automatically run the first report
 
-  if (model.is3d()) {
+  if (model.is3d() && flagModel === false) {
     disableReportMenu();
     viewer['3d'].addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, function(event) {
       enableReportMenu();
