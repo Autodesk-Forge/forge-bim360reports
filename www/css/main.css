@@ -2,6 +2,7 @@ body {
     padding-top: 3%; /* space for the top nav bar */
 }
 
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
 and (min-device-width : 320px) 
@@ -119,7 +120,7 @@ svg{
     top: 4%;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #viewerSecondary {
@@ -131,7 +132,7 @@ svg{
     top: 53vh;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #positionCharts {
@@ -200,7 +201,7 @@ svg{
     top: 4%;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #viewerSecondary {
@@ -212,7 +213,7 @@ svg{
     top: 53vh;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #positionCharts {
@@ -280,7 +281,7 @@ svg{
     top: 4%;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #viewerSecondary {
@@ -292,7 +293,7 @@ svg{
     top: 53vh;
     left: 28%;
     right: 0;
-    background-color: #bcbcbc;
+    
 }
 
 #positionCharts {
