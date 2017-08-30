@@ -1,99 +1,311 @@
+body {
+    padding-top: 3%; /* space for the top nav bar */
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* IPad Pro Portrait */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+}
+
+/* IPad Pro Landscape */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+
+}
+
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1024px) {
+/* Styles */
+
 html, body {
     height: 100%;
     overflow: hidden;
 }
 
-body {
-    padding-top: 61px; /* space for the top nav bar */
+svg{
+    width: 530px !important;
+    height: 490px !important;
 }
-
-.btn-position{
-    margin-left: 25%;
-    margin-top: 90%
-}
-
-#pieChart{
-    
-}
-
-#barChart{
-    
-}
-
 .data-container {
-    height: calc(100vh - 61px);
-    width: calc(27vw - 34px);
+    height: calc(100vh - 55px);
+    width: calc(30vw - 36px);
     overflow: auto;
 }
 
 .report-dropdowns {
-    margin-left: 8%; 
+    margin-left: 4%; 
     visibility: hidden;   
 }
 
 
 .svgcanvas{
-    margin-left: 5%;
+    margin-left: 0;
 }
 
 #dropdown2dviews {
     height: 2%;
-    width: 45% !important;
+    width: 40% !important;
     display: block;
     position: absolute;
     bottom: 0;
-    top: 0;
-    left: 0;
+    top: 51vh;
+    left: 28%;
     right: 0;
-    margin-top: 51vh;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 25%;
     z-index: 2;
     visibility: hidden;
 }
 
 
 #forgeViewer {
-    height: 46vh !important;
-    width: 45vw !important;
+    height: 47% !important;
+    width: 40vw !important;
     display: block;
     position: absolute;
     bottom: 0;
-    top: 0;
-    left: 0;
+    top: 4%;
+    left: 28%;
     right: 0;
-    margin-top: 4vh;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 25%;
     background-color: #bcbcbc;
 }
 
 #viewerSecondary {
-    height: 46vh !important;
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 53vh;
+    left: 28%;
+    right: 0;
+    background-color: #bcbcbc;
+}
+
+#positionCharts {
+    height: 94vh !important;
     width: 45vw !important;
     display: block;
     position: absolute;
     bottom: 0;
-    top: 0;
-    left: 0;
+    left: 67%;
+    top: 6%;
     right: 0;
-    margin-top: 54vh;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 25%;
-    background-color: #bcbcbc;
+}
 }
 
 
-#positionCharts {
-    /*height: 96vh !important;
-    width: 25vw !important;*/
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1367px) {
+/* Styles */
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+svg{
+    width: 530px !important;
+    height: 490px !important;
+}
+.data-container {
+    height: calc(100vh - 55px);
+    width: calc(30vw - 36px);
+    overflow: auto;
+}
+
+.report-dropdowns {
+    margin-left: 4%; 
+    visibility: hidden;   
+}
+
+
+.svgcanvas{
+    margin-left: 0;
+}
+
+#dropdown2dviews {
+    height: 2%;
+    width: 40% !important;
     display: block;
     position: absolute;
     bottom: 0;
-    top: 6%;
-    width: 33%;
+    top: 51vh;
+    left: 28%;
     right: 0;
+    z-index: 2;
+    visibility: hidden;
+}
+
+
+#forgeViewer {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 4%;
+    left: 28%;
+    right: 0;
+    background-color: #bcbcbc;
+}
+
+#viewerSecondary {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 53vh;
+    left: 28%;
+    right: 0;
+    background-color: #bcbcbc;
+}
+
+#positionCharts {
+    height: 94vh !important;
+    width: 45vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 67%;
+    top: 6%;
+    right: 0;
+}
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+svg{
+    width: 530px !important;
+    height: 490px !important;
+}
+.data-container {
+    height: calc(100vh - 55px);
+    width: calc(30vw - 38px);
+    overflow: auto;
+}
+
+.report-dropdowns {
+    padding-left: 2%; 
+    visibility: hidden;   
+}
+
+
+.svgcanvas{
+    padding-left: 5%;
+}
+
+#dropdown2dviews {
+    height: 2%;
+    width: 40% !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 51vh;
+    left: 28%;
+    right: 0;
+    z-index: 2;
+    visibility: hidden;
+}
+
+
+#forgeViewer {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 4%;
+    left: 28%;
+    right: 0;
+    background-color: #bcbcbc;
+}
+
+#viewerSecondary {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 53vh;
+    left: 28%;
+    right: 0;
+    background-color: #bcbcbc;
+}
+
+#positionCharts {
+    height: 94vh !important;
+    width: 45vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 68%;
+    top: 6%;
+    right: 0;
+}
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
 }
