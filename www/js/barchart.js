@@ -63,6 +63,7 @@ function loadBarChart(lmvData) {
         d3.selectAll('svg .nv-bar').on('click', handleBarClick);
 
         nv.utils.windowResize(barChart.update);
+        window.addEventListener('resize', barChart.render);
 
         return barChart;
     });

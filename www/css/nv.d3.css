@@ -157,11 +157,11 @@ svg {
 
 
 svg text {
-  font: normal 12px Arial;
+  font: normal 10px Arial;
 }
 
 svg .title {
- font: bold 14px Arial;
+ font: bold 12px Arial;
 }
 
 .nvd3 .nv-background {

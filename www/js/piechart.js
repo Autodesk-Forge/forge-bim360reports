@@ -216,6 +216,18 @@ function loadReportDataPieChart(pieOpts) {
         }
         
         _pieChart = new d3pie("pieChart", pieOpts);
+         console.log('my pie chart', _pieChart)
+
+         // Responsiveness for PIECHART Prototype
+
+        //  var width = $("#pieChart").width();
+        //  var height = $("#pieChart").height();
+
+        // _pieChart.svg.attr("width", '100%')
+        // .attr("height", '100%')
+        // .attr('viewBox','0 0 '+Math.min(width,height)+' '+Math.min(width,height))
+        // .attr('preserveAspectRatio','xMinYMin')
+
         loadBarChart(pieOpts.data);
     }
 }
@@ -240,7 +252,6 @@ function initPieOpts(fieldName, reportIndex) {
 
 function initPieDefaults(fieldName) {
     var strSubTitle = "Quantities in model (" + fieldName + ")";
-
 
     var pieDefaults = {
         "header": {
