@@ -19,7 +19,6 @@
 // BarChart using NVD3.js
 // This will get called when PieChart gets called by the LoadModels.js file
 
-
 function loadBarChart(lmvData) {
 
     nv.addGraph(function() {
