@@ -6,7 +6,7 @@
 # DEVELOPMENT SETUP
 export FORGE_CLIENT_ID='KEpH9XvwKpOl2kFOFzGVdu0GXikDjuG8'
 export FORGE_CLIENT_SECRET='0jUGHZU3G99GRATf'
-export FORGE_CALLBACK_URL='http://10.18.110.13:3000/api/forge/callback/oauth'
+export FORGE_CALLBACK_URL='http://10.0.1.11:3000/api/forge/callback/oauth'
 
 # PRODUCTION SETUP
 # export FORGE_CLIENT_ID='REPLACE_ME'

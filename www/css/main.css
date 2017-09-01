@@ -9,6 +9,89 @@ body {
     padding-top: 15px;
 }
 
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+svg{
+    margin-left: 0%;
+    /*width: 100% !important;
+    height: 40% !important;*/
+   /* width: 530px !important;
+    height: 490px !important;*/
+}
+
+
+.data-container {
+    height: calc(100vh - 55px);
+    width: calc(30vw - 36px);
+    overflow: auto;
+}
+
+
+.report-dropdowns {
+    margin-left: 7.5%;
+    padding-top: 2%;
+    font-size: 8px !important;
+    visibility: hidden;   
+}
+
+.svgcanvas{
+    margin-left: 2%;
+}
+
+#dropdown2dviews {
+    height: 2%;
+    width: 40% !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 51vh;
+    left: 28%;
+    right: 0;
+    z-index: 2;
+    visibility: hidden;
+}
+
+
+#forgeViewer {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 4%;
+    left: 28%;
+    right: 0;
+    
+}
+
+#viewerSecondary {
+    height: 47% !important;
+    width: 40vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: 53vh;
+    left: 28%;
+    right: 0;
+    
+}
+
+#positionCharts {
+    height: 94vh !important;
+    width: 45vw !important;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 67%;
+    top: 6%;
+    right: 0;
+    overflow: auto;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
 and (min-device-width : 320px) 
@@ -64,7 +147,7 @@ and (orientation : portrait) {
   and (min-device-width: 1024px) 
   and (max-device-width: 1366px) 
   and (orientation: landscape) 
-  and (-webkit-min-device-pixel-ratio: 1.5) {
+  and (-webkit-min-device-pixel-ratio: 1) {
 
 html, body {
     height: 100%;
@@ -81,12 +164,25 @@ body {
 }
 
 svg{
-    width: 140% !important;
-    height: 80% !important;
-   /* width: 530px !important;
-    height: 490px !important;*/
-    overflow: auto;
+    margin-left: -1%;
+    width: 270px !important;
+    height: 270px !important;
 }
+
+#pieChart {
+    margin-left: -3%;
+    width: 530px;
+    height: 360px;
+    margin-top: -10%;
+}
+
+#barChart {
+    margin-left: -3%;
+    width: 525px;
+    height: 360px;
+    margin-top: -10%;
+}
+
 .data-container {
     height: calc(100vh - 55px);
     width: calc(30vw - 36px);
@@ -95,14 +191,9 @@ svg{
 
 .report-dropdowns {
     margin-left: 2%;
-    padding-top: 2%;
+    padding-top: 1%;
     font-size: 7px !important;
     visibility: hidden;   
-}
-
-
-#pieChart {
-    height: 300px
 }
 
 .svgcanvas{
@@ -115,7 +206,7 @@ svg{
     display: block;
     position: absolute;
     bottom: 0;
-    top: 51vh;
+    top: 50vh;
     left: 28%;
     right: 0;
     z-index: 2;
@@ -156,7 +247,7 @@ svg{
     left: 73%;
     top: 8%;
     right: 0;
-    overflow: auto;
+    
 }
 
 }
@@ -178,17 +269,17 @@ body {
 }
 
 svg{
-    width: 100% !important;
-    height: 40% !important;
-   /* width: 530px !important;
-    height: 490px !important;*/
-}
-.data-container {
-    height: calc(100vh - 55px);
-    width: calc(30vw - 36px);
-    overflow: auto;
+    margin-left: 0%;
+    width: 440px !important;
+    height: 460px !important;
 }
 
+#pieChart {
+    margin-left: -3%;
+    width: 525px;
+    height: 460px;
+    margin-top: -3%;
+}
 
 .report-dropdowns {
     margin-left: 7.5%;
@@ -269,9 +360,18 @@ body {
 }
 
 svg{
-    width: 530px !important;
-    height: 490px !important;
+    margin-left: 2%;
+    width: 640px !important;
+    height: 460px !important;
 }
+
+#pieChart {
+    margin-left: 2%;
+    width: 725px;
+    height: 460px;
+    margin-top: -3%;
+}
+
 .data-container {
     height: calc(100vh - 55px);
     width: calc(30vw - 36px);
@@ -334,7 +434,7 @@ svg{
     display: block;
     position: absolute;
     bottom: 0;
-    left: 67%;
+    left: 69%;
     top: 6%;
     right: 0;
     overflow: auto;
@@ -358,8 +458,16 @@ body {
 }
 
 svg{
-    width: 530px !important;
-    height: 490px !important;
+    margin-left: 0%;
+    width: 700px !important;
+    height: 460px !important;
+}
+
+#pieChart {
+    margin-left: 0%;
+    width: 600px;
+    height: 460px;
+    margin-top: 0%;
 }
 .data-container {
     height: calc(100vh - 55px);
@@ -423,7 +531,7 @@ svg{
     display: block;
     position: absolute;
     bottom: 0;
-    left: 68%;
+    left: 66%;
     top: 6%;
     right: 0;
 }
