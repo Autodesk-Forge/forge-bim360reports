@@ -37,21 +37,23 @@ function prepareDataManagementTree() {
       'data': {
         "url": '/dm/getTreeNode',
         "dataType": "json",
-        'multiple': false,
+        "multiple": false,
+        "cache": false,
         "data": function (node) {
           $('#dataManagementHubs').jstree(true).toggle_node(node);
           return {"id": node.id};
         },
-        "cache" : false,
         "success": function (nodes) {
           nodes.forEach(function (n) {
-            if (n.type === 'bim360hubs' && n.id.indexOf('b.') > 0)
+            if (n.type === 'bim360Hubs' && n.id.indexOf('b.') > 0)
               haveBIM360Hub = true;
           });
           if (!haveBIM360Hub) {
             $.getJSON("/api/forge/clientID", function (data) {
               $("#ClientID").val(data.ForgeClientId);
+              $('#provisionAccountModal').modal();
               $("#BIMconfig").show();
+              haveBIM360Hub = true;
             });
           }
         }        
