@@ -5,6 +5,7 @@
   "dependencies": {
     "body-parser": "*",
     "bootstrap": "*",
+    "clipboard": "^1.7.1",
     "cookie-parser": "*",
     "express": "*",
     "express-session": "*",

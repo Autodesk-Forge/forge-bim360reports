@@ -42,6 +42,7 @@ app.use('/js', express.static(__dirname + '/../node_modules/bootstrap/dist/js'))
 app.use('/js', express.static(__dirname + '/../node_modules/jquery/dist')); // redirect static calls
 app.use('/js', express.static(__dirname + '/../node_modules/jstree/dist')); // redirect static calls
 app.use('/js', express.static(__dirname + '/../node_modules/moment/min')); // redirect static calls
+app.use('/js', express.static(__dirname + '/../node_modules/clipboard/dist')); // redirect static calls
 app.use('/css', express.static(__dirname + '/../node_modules/bootstrap/dist/css')); // redirect static calls
 app.use('/css/jstree', express.static(__dirname + '/../node_modules/jstree/dist/themes/default')); // redirect static calls (jstree use 'style.css', which is very generic, so let's use an extra folder)
 app.use('/fonts', express.static(__dirname + '/../node_modules/bootstrap/dist/fonts')); // redirect static calls
