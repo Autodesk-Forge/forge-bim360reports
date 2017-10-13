@@ -2,6 +2,11 @@
 
 This sample application demonstrates how to extract properties from elements and generate a project dashboard
 
+
+### Thumbnail
+
+![thumbnail](img/VR_thumbnail.png)
+
 ### Live version
 
 [https://bim360reports.herokuapp.com](https://bim360reports.herokuapp.com/)
