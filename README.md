@@ -1,6 +1,9 @@
 # bim360appstore-viewer-nodejs-visual.reports
 
-This sample application demonstrates how to extract properties from elements and generate a project dashboard
+This sample application demonstrates how to extract properties from elements and generate a project dashboard. 
+
+Project based on Jim Awe - LMVNavTest (Depracated)
+[https://github.com/JimAwe/LmvNavTest](https://github.com/JimAwe/LmvNavTest)
 
 ### Live version
 
