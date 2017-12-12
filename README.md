@@ -2,7 +2,7 @@
 
 [![OAuth2](https://img.shields.io/badge/OAuth2-v1-green.svg)](http://developer.autodesk.com/)
 [![Data-Management](https://img.shields.io/badge/Data%20Management-v2-green.svg)](http://developer.autodesk.com/)
-[![Viewer](https://img.shields.io/badge/Viewer-v2.17-green.svg)](http://developer.autodesk.com/)
+[![Viewer](https://img.shields.io/badge/Viewer-v3.3-green.svg)](http://developer.autodesk.com/)
 
 This sample application demonstrates how to extract properties from elements and generate a project dashboard
 
@@ -16,7 +16,7 @@ Project based on Jim Awe - LMVNavTest (Depracated)
 
 ### Live version
 
-[https://bim360reports.herokuapp.com](https://bim360reports.herokuapp.com/)
+[https://bim360reports.autodesk.io](https://bim360reports.autodesk.io/)
 
 
 # Setup
@@ -38,6 +38,7 @@ Mac OSX/Linux (Terminal)
     npm install
     export FORGE_CLIENT_ID=<<YOUR CLIENT ID FROM FORGE DEVELOPER PORTAL>>
     export FORGE_CLIENT_SECRET=<<YOUR FORGE CLIENT SECRET>>
+    export FORGE_CALLBACK_URL=<<YOUR CALLBACK URL FROM FORGE DEVELOPER PORTAL>>
     npm run dev
 
 Windows (use <b>Node.js command line</b> from Start menu)
@@ -45,6 +46,7 @@ Windows (use <b>Node.js command line</b> from Start menu)
     npm install
     set FORGE_CLIENT_ID=<<YOUR CLIENT ID FROM FORGE DEVELOPER PORTAL>>
     set FORGE_CLIENT_SECRET=<<YOUR FORGE CLIENT SECRET>>
+    set FORGE_CALLBACK_URL=<<YOUR CALLBACK URL FROM FORGE DEVELOPER PORTAL>>
     npm run dev
 
 Open the browser: [http://localhost:3000](http://localhost:3000).
