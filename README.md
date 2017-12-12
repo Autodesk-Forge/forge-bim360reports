@@ -16,7 +16,7 @@ Project based on Jim Awe - LMVNavTest (Depracated)
 
 ### Live version
 
-[https://bim360reports.herokuapp.com](https://bim360reports.herokuapp.com/)
+[https://bim360reports.autodesk.io](https://bim360reports.autodesk.io/)
 
 
 # Setup

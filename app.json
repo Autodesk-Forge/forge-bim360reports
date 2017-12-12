@@ -1,7 +1,7 @@
 {
   "name": "BIM 360 Visual Reports",
   "description": "BIM 360 Visual Reports",
-  "repository": "https://github.com/augustogoncalves/bim360appstore-viewer-nodejs-visual.reports",
+  "repository": "https://github.com/Autodesk-Forge/bim360appstore-viewer-nodejs-visual.reports",
   "logo": "https://avatars0.githubusercontent.com/u/8017462?v=3&s=200",
   "keywords": [
     "express",
