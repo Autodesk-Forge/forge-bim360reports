@@ -26,6 +26,15 @@ $(document).ready(function () {
     });
   }
 
+    $.getJSON("/api/forge/clientID", function (res) {
+        $("#ClientID").val(res.ForgeClientId);
+    });
+
+    $("#provisionAccountSave").click(function () {
+        $('#provisionAccountModal').modal('toggle');
+        $('#dataManagementHubs').jstree(true).refresh();
+    });
+
 });
 
 var haveBIM360Hub = false;
@@ -48,14 +57,10 @@ function prepareDataManagementTree() {
             if (n.type === 'bim360Hubs' && n.id.indexOf('b.') > 0)
               haveBIM360Hub = true;
           });
-          if (!haveBIM360Hub) {
-            $.getJSON("/api/forge/clientID", function (data) {
-              $("#ClientID").val(data.ForgeClientId);
-              $('#provisionAccountModal').modal();
-              $("#BIMconfig").show();
-              haveBIM360Hub = true;
-            });
-          }
+            if (!haveBIM360Hub) {
+                $("#provisionAccountModal").modal();
+                haveBIM360Hub = true;
+            }
         }        
       }
     },
