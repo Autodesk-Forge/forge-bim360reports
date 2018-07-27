@@ -167,32 +167,57 @@ function getHubs(tokenSession, res) {
 
 
 
+// function getFolderContents(projectId, folderId, tokenSession, res) {
+//   var folders = new forgeSDK.FoldersApi();
+//   folders.getFolderContents(projectId, folderId, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
+//     .then(function (folderContents) {
+//       var folderItemsForTree = [];
+//       folderContents.body.data.forEach(function (item) {
+
+//         var displayName = item.attributes.displayName == null ? item.attributes.name : item.attributes.displayName;
+//         if (displayName !== '') { // BIM 360 Items with no displayName also don't have storage, so not file to transfer
+//           folderItemsForTree.push(prepareItemForTree(
+//             item.links.self.href,
+//             displayName,
+//             item.type,
+//             true
+//           ));
+//         }
+//       });
+//       res.json(folderItemsForTree);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//       res.status(500).end();
+//     });
+// }
+
 function getFolderContents(projectId, folderId, tokenSession, res) {
   var folders = new forgeSDK.FoldersApi();
   folders.getFolderContents(projectId, folderId, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
-    .then(function (folderContents) {
-      var folderItemsForTree = [];
-      folderContents.body.data.forEach(function (item) {
-
-        var displayName = item.attributes.displayName == null ? item.attributes.name : item.attributes.displayName;
-        if (displayName !== '') { // BIM 360 Items with no displayName also don't have storage, so not file to transfer
-          folderItemsForTree.push(prepareItemForTree(
-            item.links.self.href,
-            displayName,
-            item.type,
-            true
-          ));
-        }
+      .then(function (folderContents) {
+          var folderItemsForTree = [];
+          folderContents.body.data.forEach(function (item) {
+              if (item.attributes.extension.type.indexOf('File') == -1 
+              && item.attributes.extension.type.indexOf('Folder') == -1
+              && item.attributes.extension.type.indexOf('C4RModel') == -1) return;
+              var name = 'N/A';
+              if (item.attributes.displayName !== '') name = item.attributes.displayName;
+              else if (item.attributes.extension.data.sourceFileName !== null) name = item.attributes.extension.data.sourceFileName;
+              folderItemsForTree.push(prepareItemForTree(
+                  item.links.self.href,
+                  name,
+                  item.type,
+                  true,
+              ));
+          });
+          res.json(folderItemsForTree);
+      })
+      .catch(function (error) {
+          console.log(error);
+          res.status(500).end();
       });
-      res.json(folderItemsForTree);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.status(500).end();
-    });
 }
-
-
 
 function getVersions(projectId, itemId, tokenSession, res) {
   var items = new forgeSDK.ItemsApi();
