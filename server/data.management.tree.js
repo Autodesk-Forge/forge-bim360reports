@@ -208,7 +208,7 @@ function getFolderContents(projectId, folderId, tokenSession, res) {
                   item.links.self.href,
                   name,
                   item.type,
-                  true,
+                  true
               ));
           });
           res.json(folderItemsForTree);
