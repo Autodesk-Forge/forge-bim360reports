@@ -12,7 +12,7 @@ Project based on Jim Awe - LMVNavTest (Depracated)
 
 ### Thumbnail
 
-![thumbnail](img/VR_thumbnail.png)
+![thumbnail](/thumbnail.png)
 
 ### Live version
 
