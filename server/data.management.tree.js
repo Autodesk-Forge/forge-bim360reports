@@ -165,33 +165,6 @@ function getHubs(tokenSession, res) {
     });
 }
 
-
-
-// function getFolderContents(projectId, folderId, tokenSession, res) {
-//   var folders = new forgeSDK.FoldersApi();
-//   folders.getFolderContents(projectId, folderId, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
-//     .then(function (folderContents) {
-//       var folderItemsForTree = [];
-//       folderContents.body.data.forEach(function (item) {
-
-//         var displayName = item.attributes.displayName == null ? item.attributes.name : item.attributes.displayName;
-//         if (displayName !== '') { // BIM 360 Items with no displayName also don't have storage, so not file to transfer
-//           folderItemsForTree.push(prepareItemForTree(
-//             item.links.self.href,
-//             displayName,
-//             item.type,
-//             true
-//           ));
-//         }
-//       });
-//       res.json(folderItemsForTree);
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//       res.status(500).end();
-//     });
-// }
-
 function getFolderContents(projectId, folderId, tokenSession, res) {
   var folders = new forgeSDK.FoldersApi();
   folders.getFolderContents(projectId, folderId, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
@@ -208,7 +181,7 @@ function getFolderContents(projectId, folderId, tokenSession, res) {
                   item.links.self.href,
                   name,
                   item.type,
-                  true,
+                  true
               ));
           });
           res.json(folderItemsForTree);
