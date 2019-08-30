@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Autodesk Forge Tutorial</title>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/favicon.ico">
+  <!-- Common packages: jQuery, Bootstrap, jsTree -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/jstree.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/themes/default/style.min.css" />
+  <!-- Autodesk Forge Viewer files -->
+  <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css" type="text/css">
+  <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
+  <!-- this project files -->
+  <link href="css/main.css" rel="stylesheet" />
+  <script src="js/ForgeTree.js"></script>
+  <script src="js/ForgeViewer.js"></script>
+  <!-- dashboard files -->
+  <script src="js/Dashboard/FamilyTypePieChart.js"></script>
+  <script src="js/Dashboard/Main.js"></script>  
+</head>
+
+<body>
+  <!-- Fixed navbar by Bootstrap: https://getbootstrap.com/examples/navbar-fixed-top/ -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav left">
+        <li>
+          <a href="http://developer.autodesk.com" target="_blank">
+            <img alt="Autodesk Forge" src="//developer.static.autodesk.com/images/logo_forge-2-line.png" height="20">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- End of navbar -->
+  <div class="container-fluid fill">
+    <div class="row fill">
+      <div class="col-sm-4 fill">
+        <div class="panel panel-default fill">
+          <div class="panel-heading" data-toggle="tooltip" style="padding: 0px;">
+            <span id="userInfo"></span>
+            <span id="refreshHubs" class="glyphicon glyphicon-refresh" style="cursor: pointer; display: none" title="Refresh list of files"></span>
+            <span id="signOut" class="glyphicon glyphicon-log-out" style="margin-top:5px;cursor: pointer; float: right; display: none" title="Sign out"> </span>
+          </div>
+          <div id="userHubs">
+            <div style="padding-top: 100px; text-align: center;">
+              <button class="btn btn-lg btn-default" id="autodeskSigninButton">
+                <img src="https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/autodesk_text.png"
+                  height="20"> Sign in
+              </button>
+              <br/>
+              <br/>
+              <br/> You may also need to provision your<br/> BIM 360 Docs account for this app.<br/>
+              <a href="https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps">Learn more</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 fill">
+        <div id="forgeViewer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<iframe id="hiddenFrame" style="visibility: hidden; display: none" />
+</html>
