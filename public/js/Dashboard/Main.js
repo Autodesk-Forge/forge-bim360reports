@@ -33,8 +33,8 @@ var dashboardPanels = {};
 
 // define the panels in order:
 // dashboardPanels['panelDivID'] = new objetName();
-dashboardPanels['familyTypePieChart'] = new FamilyTypePieChart();
+//dashboardPanels['familyTypePieChart'] = new FamilyTypePieChart();
 
 //Only one working at a time, they get stacked on the same location we need to move one below the other.
 dashboardPanels['viewer2d'] = new Viewer2d();
-//dashboardPanels['familyTypeBarChart'] = new FamilyTypeBarChart();
+dashboardPanels['familyTypeBarChart'] = new FamilyTypeBarChart();

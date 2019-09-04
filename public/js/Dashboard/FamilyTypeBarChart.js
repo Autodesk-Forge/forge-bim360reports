@@ -8,7 +8,7 @@ function FamilyTypeBarChart(div, viewer) {
 FamilyTypeBarChart.prototype.load = function () {
     var barchartCanvas = $('#familyTypeBarChart'); // need to change the hardcoded ID
     barchartCanvas.append('<canvas id="myChart" width="400" height="400"></canvas>');
-    barCharts();
+    startReportDataLoader(viewer, runBarReport);
 }
 
 FamilyTypeBarChart.prototype.supportedExtensions = function () {
@@ -16,31 +16,57 @@ FamilyTypeBarChart.prototype.supportedExtensions = function () {
     return ['rvt'];
 }
 
-function barCharts() {
+function barChart(barOpts) {
+    barOpts.data.content.sort(function (a, b) {
+        if (a.value < b.value) return 1;
+        else if (a.value > b.value) return -1;
+        return 0;
+    });
+
+    if (barOpts.data.content.length < 10) {
+        barOpts.data.smallSegmentGrouping.enabled = false;
+    } else if (barOpts.data.content.length > 20) {
+        //barOpts.labels.truncation.enabled = true;
+        var thresholdObj = barOpts.data.content[19];
+        barOpts.data.smallSegmentGrouping.value = thresholdObj.value;
+    }
+
+    console.log('The bar opts', barOpts);
+
+    var Labels = [];
+    var BarValues = [];
+    var dbids = [];
+    var coloR = [];
+
+    function get_random_color() {
+        var letters = 'ABCDE'.split('');
+        var color = '#';
+        for (var i=0; i<3; i++ ) {
+            color += letters[Math.floor(Math.random() * letters.length)];
+        }
+        return color;
+    }
+
+    barOpts.data.content.forEach((data) => {
+        Labels.push(data.label);
+        BarValues.push(data.value);
+        dbids.push(data.lmvIds);
+        coloR.push(get_random_color());
+    })
+
+    console.log('Array of Labels', Labels)
+    console.log('Array of Values', BarValues)
+    console.log('Array of Colors', coloR)
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: Labels,
             datasets: [{
                 label: 'System Type',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                data: BarValues,
+                backgroundColor: coloR,
+                borderColor: coloR,
                 borderWidth: 1
             }]
         },
@@ -56,9 +82,60 @@ function barCharts() {
                 display: false
             },
             'onClick' : function (evt, item) {
-                console.log ('legend onClick', evt);
-                console.log('legd item', item);
+                viewer.isolate(dbids[item[0]._index])
             }
         }
     });
+}
+
+function runBarReport() {
+   
+    var reportObj = _reportOptions[0];
+    console.log("Running report: " + reportObj.label);
+    _currentQty = null;
+    _currentBound = null;
+    var modelTypes = groupDataByType();
+    wrapDataForBarChart(modelTypes);  
+}
+
+function wrapDataForBarChart(buckets, misCount) {
+    var fieldName = (_reportOptions[0].fieldName === "");
+    var barOpts = [];
+
+    barOpts.data = {
+        "content": [],
+        "smallSegmentGrouping": {
+            "enabled": true,
+            "value": 1,
+            "valueType": "value"   // percentage or value
+        },
+    };
+
+    for (var valueKey in buckets) {
+        var barObject = {};
+        barObject.label = valueKey;
+        barObject.value = buckets[valueKey].length;
+        barObject.lmvIds = buckets[valueKey];
+        barOpts.data.content.push(barObject);
+    }
+
+    barChart(barOpts);
+}
+
+// initialize
+function initBarOpts(fieldName, reportIndex) {
+    var barOpts = initBarDefaults(fieldName);
+    barOpts.reportIndex = reportIndex;
+
+    barOpts.data = {
+        "sortOrder": _sortOrder,
+        "content": [],
+        "smallSegmentGrouping": {
+            "enabled": true,
+            "value": 1,
+            "valueType": "value"   // percentage or value
+        },
+    };
+
+    return barOpts;
 }

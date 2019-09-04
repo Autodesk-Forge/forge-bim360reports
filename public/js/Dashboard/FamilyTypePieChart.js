@@ -10,7 +10,7 @@ var _currentBound = null;
 FamilyTypePieChart.prototype.load = function () {
     var piechartCanvas = $('#familyTypePieChart');
     piechartCanvas.append('<canvas id="myChart" width="400" height="400"></canvas>');
-    startReportDataLoader(viewer, runReport);
+    startReportDataLoader(viewer, runPieReport);
 }
 
 FamilyTypePieChart.prototype.supportedExtensions = function () {
@@ -81,15 +81,13 @@ function pieChart(pieOpts) {
                 display: false
             },
             'onClick': function (evt, item) {
-                console.log('legend onClick', evt);
-                console.log('legd item', item);
                 viewer.isolate(dbids[item[0]._index])
             }
         }
     });
 }
 
-function runReport() {
+function runPieReport() {
    
     var reportObj = _reportOptions[0];
     console.log("Running report: " + reportObj.label);
