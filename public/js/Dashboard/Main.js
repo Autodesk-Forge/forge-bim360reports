@@ -21,7 +21,8 @@ function adjustLayout() {
 function loadPanels() {
     var dashboard = $('#dashboard');
     dashboard.empty();
-    Object.keys(dashboardPanels).forEach(function (id) {
+    var panelNames = Object.keys(dashboardPanels);
+    panelNames.forEach(function (id) {
         dashboard.append('<div id="' + id + '" class="dashboardPanel"></div>');
         dashboardPanels[id].load(id, viewer);
     });
@@ -35,4 +36,5 @@ var dashboardPanels = {};
 //dashboardPanels['familyTypePieChart'] = new FamilyTypePieChart();
 
 //Only one working at a time, they get stacked on the same location we need to move one below the other.
+dashboardPanels['viewer2d'] = new Viewer2d();
 dashboardPanels['familyTypeBarChart'] = new FamilyTypeBarChart();
