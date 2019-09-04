@@ -8,13 +8,13 @@ Viewer2d.prototype.load = function () {
 }
 
 Viewer2d.prototype.enumerate2dViews = function () {
-    function traverse(bubles) {
-        bubles.forEach(function (buble) {
-            if (buble.isGeometry() && buble.is2D())
-                console.log(buble.data.name); // add this to a <select>
+    function traverse(bubbles) {
+        bubbles.forEach(function (bubble) {
+            if (bubble.isGeometry() && bubble.is2D())
+                console.log(bubble.data.name); // add this to a <select>
 
             // ToDo: need a better way to check this...
-            if (buble.children) traverse(buble.children);
+            if (bubble.children) traverse(bubble.children);
         })
     }
     traverse(viewer.model.getDocumentNode().getRootNode().findAllViewables());

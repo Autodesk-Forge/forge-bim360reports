@@ -6,7 +6,7 @@ function FamilyTypeBarChart(div, viewer) {
 
 
 FamilyTypeBarChart.prototype.load = function () {
-    var barchartCanvas = $('#familyTypeBarChart');
+    var barchartCanvas = $('#familyTypeBarChart'); // need to change the hardcoded ID
     barchartCanvas.append('<canvas id="myChart" width="400" height="400"></canvas>');
     barCharts();
 }
