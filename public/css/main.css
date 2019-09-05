@@ -9,7 +9,6 @@
 
 body {
   padding-top: 60px; /* space for the top nav bar */
-  margin-right: 30px;
 }
 
 #userHubs {
@@ -24,4 +23,18 @@ body {
 
 .dashboardPanel {
   width: 100%;
+  padding: 3%;
+}
+
+#familyTypePieChart{
+  display: block;
+}
+
+
+#familyTypeBarChart{
+  display: block;
+}
+
+#familyTypeBubbleChart{
+  display: block;
 }

@@ -15,7 +15,8 @@ function adjustLayout() {
     // collumns so it can fit the new dashboard collumn
     var row = $(".row").children();
     $(row[0]).removeClass('col-sm-4').addClass('col-sm-2');
-    $(row[1]).removeClass('col-sm-8').addClass('col-sm-5').after('<div class="col-sm-5" id="dashboard"></div>');
+    //$(row[1]).removeClass('col-sm-8').addClass('col-sm-5').after('<div class="col-sm-5" id="dashboard"></div>');
+    $(row[1]).after('<div class="col-sm-2" id="dashboard"></div>');
 }
 
 function loadPanels() {
@@ -33,8 +34,10 @@ var dashboardPanels = {};
 
 // define the panels in order:
 // dashboardPanels['panelDivID'] = new objetName();
-//dashboardPanels['familyTypePieChart'] = new FamilyTypePieChart();
+
 
 //Only one working at a time, they get stacked on the same location we need to move one below the other.
 dashboardPanels['viewer2d'] = new Viewer2d();
 dashboardPanels['familyTypeBarChart'] = new FamilyTypeBarChart();
+dashboardPanels['familyTypePieChart'] = new FamilyTypePieChart();
+dashboardPanels['familyTypeLineChart'] = new FamilyTypeLineChart();

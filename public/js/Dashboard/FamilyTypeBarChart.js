@@ -7,7 +7,7 @@ function FamilyTypeBarChart(div, viewer) {
 
 FamilyTypeBarChart.prototype.load = function () {
     var barchartCanvas = $('#familyTypeBarChart'); // need to change the hardcoded ID
-    barchartCanvas.append('<canvas id="myChart" width="400" height="400"></canvas>');
+    barchartCanvas.append('<canvas id="myBarChart" width="400" height="400"></canvas>');
     startReportDataLoader(viewer, runBarReport);
 }
 
@@ -57,7 +57,7 @@ function barChart(barOpts) {
     console.log('Array of Labels', Labels)
     console.log('Array of Values', BarValues)
     console.log('Array of Colors', coloR)
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myBarChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
