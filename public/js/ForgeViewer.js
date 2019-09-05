@@ -41,10 +41,6 @@ function launchViewer(urn, viewableId) {
       // any additional action here?
     });
 
-    // viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, function(event){
-    //   console.log('Geom Loaded');
-    //   startReportDataLoader(viewer, runReport);
-    // })
   }
 
   function onDocumentLoadFailure(viewerErrorCode) {
