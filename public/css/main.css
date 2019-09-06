@@ -7,6 +7,10 @@
   height: calc(100vh - 100px);
 }
 
+.transition-width {
+  transition: width 1s ease-in-out;
+}
+
 body {
   padding-top: 60px; /* space for the top nav bar */
 }
