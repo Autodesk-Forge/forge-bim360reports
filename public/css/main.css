@@ -21,20 +21,13 @@ body {
   width: 100%;
 }
 
+#dashboard{
+  overflow: auto;
+  height: calc(100vh - 100px);
+}
+
 .dashboardPanel {
   width: 100%;
   padding: 3%;
-}
-
-#familyTypePieChart{
-  display: block;
-}
-
-
-#familyTypeBarChart{
-  display: block;
-}
-
-#familyTypeBubbleChart{
   display: block;
 }
