@@ -28,11 +28,18 @@ class DashboardPanel {
 // Dashboard panels for charts
 class DashboardPanelChart extends DashboardPanel {
     load(parentDivId, divId, viewer, modelData) {
+        if (!modelData.hasProperty(this.propertyToUse)){
+            alert('This model does not contain a ' + this.propertyToUse +' property for the ' + this.constructor.name);
+            return false;
+        } 
+        divId = this.propertyToUse.replace(/[^A-Za-z0-9]/gi, '') + divId; // div name = property + chart type
         super.load(parentDivId, divId, viewer);
         this.canvasId = divId + 'Canvas';
         $('#' + divId).append('<canvas id="' + this.canvasId + '" width="400" height="400"></canvas>');
         this.modelData = modelData;
+        return true;
     }
+
     generateColors(count) {
         var background = []; var borders = [];
         for (var i = 0; i < count; i++) {
@@ -87,6 +94,10 @@ class ModelData {
             }, true);
             callback(leaves);
         });
+    }
+
+    hasProperty(propertyName){
+        return (this._modelData[propertyName] !== undefined);
     }
 
     getLabels(propertyName) {
