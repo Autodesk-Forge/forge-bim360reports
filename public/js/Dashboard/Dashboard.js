@@ -50,7 +50,7 @@ class Dashboard {
         $(row[1]).removeClass('col-sm-8').addClass('col-sm-7 transition-width').after('<div class="col-sm-3 transition-width" id="dashboard"></div>');
     }
 
-    loadPanels = function () {
+    loadPanels () {
         var _this = this;
         var data = new ModelData(this);
         data.init(function () {
