@@ -30,10 +30,11 @@ class PieChart extends DashboardPanelChart {
     drawChart() {
         var _this = this; // need this for the onClick event
 
-        var ctx = document.getElementById(this.canvasId);
+        var ctx = document.getElementById(this.canvasId).getContext('2d');
+        if (this.chart !== undefined) this.chart.destroy();
         var colors = this.generateColors(this.modelData.getLabels(this.propertyToUse).length);
 
-        new Chart(ctx, {
+        this.chart = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: this.modelData.getLabels(this.propertyToUse),
@@ -46,7 +47,7 @@ class PieChart extends DashboardPanelChart {
             },
             options: {
                 legend: {
-                    display: true
+                    display: false
                 },
                 'onClick': function (evt, item) {
                     _this.viewer.isolate(_this.modelData.getIds(_this.propertyToUse, item[0]._model.label));

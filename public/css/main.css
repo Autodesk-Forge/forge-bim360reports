@@ -1,9 +1,9 @@
-﻿html, body{
+﻿html, body {
   min-height: 100%;
   height: 100%;
 }
 
-.fill{
+.fill {
   height: calc(100vh - 100px);
 }
 
@@ -12,7 +12,8 @@
 }
 
 body {
-  padding-top: 60px; /* space for the top nav bar */
+  padding-top: 60px;
+  /* space for the top nav bar */
 }
 
 #userHubs {
@@ -25,7 +26,7 @@ body {
   width: 100%;
 }
 
-#dashboard{
+#dashboard {
   overflow: auto;
   height: calc(100vh - 100px);
 }
@@ -34,4 +35,8 @@ body {
   width: 100%;
   padding: 3%;
   display: block;
+}
+
+.dashboardTitle {
+  margin-bottom: 10px;
 }

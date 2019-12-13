@@ -16,14 +16,16 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
 
+window.dashboard = null
+
 $(document).ready(function () {
     $(document).on('DOMNodeInserted', function (e) {
         if ($(e.target).hasClass('orbit-gizmo')) {
             // to make sure we get the viewer, let's use the global var NOP_VIEWER
             if (NOP_VIEWER === null || NOP_VIEWER === undefined) return;
-            new Dashboard(NOP_VIEWER, [
-                new BarChart('Material'),
-                new PieChart('Material')
+            dashboard = new Dashboard(NOP_VIEWER, [
+                new BarChart('Type Name'),
+                new PieChart('Family Name')
             ])
         }
     });
@@ -52,7 +54,7 @@ class Dashboard {
 
     loadPanels () {
         var _this = this;
-        var data = new ModelData(this);
+        var data = new ModelData(this._viewer);
         data.init(function () {
             $('#dashboard').empty();
             _this._panels.forEach(function (panel) {

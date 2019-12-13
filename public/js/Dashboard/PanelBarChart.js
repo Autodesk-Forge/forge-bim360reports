@@ -31,9 +31,10 @@ class BarChart extends DashboardPanelChart {
         var _this = this; // need this for the onClick event
 
         var ctx = document.getElementById(this.canvasId).getContext('2d');
+        if (this.chart !== undefined) this.chart.destroy();
         var colors = this.generateColors(this.modelData.getLabels(this.propertyToUse).length);
 
-        new Chart(ctx, {
+        this.chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: this.modelData.getLabels(this.propertyToUse),
