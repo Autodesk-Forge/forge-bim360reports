@@ -49,6 +49,10 @@ function launchViewer(urn, viewableId) {
     viewer.start();
     var documentId = 'urn:' + urn;
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
+
+    // smooth navigation...
+    viewer.autocam.shotParams.destinationPercent = 3;
+    viewer.autocam.shotParams.duration = 3;
   });
 
   function onDocumentLoadSuccess(doc) {

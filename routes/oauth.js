@@ -29,7 +29,7 @@ router.get('/callback/oauth', async (req, res, next) => {
     try {
         await oauth.setCode(code);
         res.redirect('/');
-    } catch(err) {
+    } catch (err) {
         next(err);
     }
 });
@@ -49,6 +49,10 @@ router.get('/oauth/signout', (req, res) => {
     res.redirect('/');
 });
 
+router.get('/clientId', (req, res) => {
+    res.json({ clientId: config.credentials.client_id });
+});
+
 // Endpoint to return a 2-legged access token
 router.get('/oauth/token', async (req, res, next) => {
     const oauth = new OAuth(req.session);
@@ -60,7 +64,7 @@ router.get('/oauth/token', async (req, res, next) => {
     try {
         const accessToken = await oauth.getPublicToken();
         res.json(accessToken);
-    } catch(err) {
+    } catch (err) {
         next(err);
     }
 });

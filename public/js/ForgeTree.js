@@ -46,6 +46,17 @@ $(document).ready(function () {
     }
   });
 
+  jQuery.ajax({
+    url: '/api/forge/clientId',
+    success: function (res) {
+      $('#clientId').val(res.clientId);
+      $("#provisionAccountSave").click(function () {
+        $('#provisionAccountModal').modal('toggle');
+        $('#userHubs').jstree(true).refresh();
+      });
+    }
+  });
+
   $('#autodeskSigninButton').click(function () {
     jQuery.ajax({
       url: '/api/forge/oauth/url',
@@ -78,7 +89,7 @@ function prepareUserHubsTree() {
       'personalHub': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360hub.png' },
       'bim360Hubs': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/bim360hub.png' },
       'bim360projects': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/bim360project.png' },
-      'a360projects': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360project.png' },      
+      'a360projects': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360project.png' },
       'folders': { 'icon': 'glyphicon glyphicon-folder-open' },
       'items': { 'icon': 'glyphicon glyphicon-file' },
       'bim360documents': { 'icon': 'glyphicon glyphicon-file' },

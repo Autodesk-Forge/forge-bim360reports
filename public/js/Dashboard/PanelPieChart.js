@@ -51,6 +51,7 @@ class PieChart extends DashboardPanelChart {
                 },
                 'onClick': function (evt, item) {
                     _this.viewer.isolate(_this.modelData.getIds(_this.propertyToUse, item[0]._model.label));
+                    _this.viewer.utilities.fitToView();
                 }
             }
         });

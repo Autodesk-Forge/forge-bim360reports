@@ -82,7 +82,7 @@ class ModelData {
 
         _this._modelData["Family Name"] = {};
 
-        _this.getAllLeafComponents(function (dbIds) {
+        var tree = _this.getAllLeafComponents(function (dbIds) {
             var count = dbIds.length;
             dbIds.forEach(function (dbId) {
                 viewer.getProperties(dbId, function (props) {
