@@ -45,7 +45,11 @@ function launchViewer(urn, viewableId) {
   };
 
   Autodesk.Viewing.Initializer(options, () => {
-    viewer = new Autodesk.Viewing.GuiViewer3D(document.getElementById('forgeViewer'));
+    const config = {
+      extensions: ['Autodesk.VisualClusters', 'Autodesk.DocumentBrowser']
+    };
+
+    viewer = new Autodesk.Viewing.GuiViewer3D(document.getElementById('forgeViewer'), config);
     viewer.start();
     var documentId = 'urn:' + urn;
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
