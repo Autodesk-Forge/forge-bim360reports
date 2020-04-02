@@ -64,6 +64,7 @@ function launchViewer(urn, viewableId) {
     var viewables = (viewableId ? doc.getRoot().findByGuid(viewableId) : doc.getRoot().getDefaultGeometry());
     viewer.loadDocumentNode(doc, viewables).then(i => {
       // any additional action here?
+      viewer.loadExtension("NestedViewerExtension", { filter: ["2d"], crossSelection: true })
     });
 
   }
