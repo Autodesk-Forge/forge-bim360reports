@@ -38,7 +38,7 @@ class DashboardPanelChart extends DashboardPanel {
         super.load(parentDivId, divId, viewer);
         this.canvasId = divId + 'Canvas';
         this.selectId = divId + 'Select';
-        $('#' + divId).append('<div class="dashboardTitle">Select report: <select id="' + this.selectId + '"></select> <a href="#" class="btn btn-xs" title="Show all elements" id="' + divId + 'showAll">Show all</a></div>');
+        $('#' + divId).append('<div class="dashboardTitle">Select: <select id="' + this.selectId + '"></select> <a href="#" class="btn btn-xs" title="Show all elements" id="' + divId + 'showAll">Reset</a></div>');
         $('#' + divId).append('<canvas id="' + this.canvasId + '" width="400" height="400"></canvas>');
         this.modelData = modelData;
         this.listProperties(this.propertyToUse);
