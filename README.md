@@ -1,4 +1,4 @@
-# bim360appstore-viewer-nodejs-visual.reports
+# BIM360 Visual Reports
 
 ![Platforms](https://img.shields.io/badge/platform-Windows|MacOS-lightgray.svg)
 [![License](http://img.shields.io/:license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
@@ -8,16 +8,15 @@
 [![Viewer](https://img.shields.io/badge/Viewer-v6-green.svg)](http://developer.autodesk.com/)
 [![BIM-360](https://img.shields.io/badge/BIM%20360-v1-green.svg)](http://developer.autodesk.com/)
 
-This sample application demonstrates how to extract properties from elements and generate a project dashboard
+This sample application demonstrates how to extract properties from elements and generate a project dashboard. Also shows a nested view with 2d views of the model (if available).
 
-Project based on Jim Awe - LMVNavTest (Depracated)
-[https://github.com/JimAwe/LmvNavTest](https://github.com/JimAwe/LmvNavTest)
+This sample is based on the Learn Forge tutorials in the section *View BIM 360 models* and *Dashboard*. The original implementation was based on [Jim Awe - LMVNavTest](https://github.com/JimAwe/LmvNavTest) (Depracated).
 
-### Thumbnail
+## Thumbnail
 
 ![thumbnail](/thumbnail.png)
 
-### Live version
+## Live version
 
 [https://bim360reports.autodesk.io](https://bim360reports.autodesk.io/)
 
@@ -28,8 +27,9 @@ Project based on Jim Awe - LMVNavTest (Depracated)
 
 1. **BIM 360 Account**: must be Account Admin to add the app integration. [Learn about provisioning](https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps).
 2. **Forge Account**: Learn how to create a Forge Account, activate subscription and create an app at [this tutorial](http://learnforge.autodesk.io/#/account/). 
-3. **Visual Studio**: Either Community (Windows) or Code (Windows, MacOS).
-4. **JavaScript** basic knowledge with **jQuery**
+3. **Visual Code** or any other text-based tool.
+4. **JavaScript** basic knowledge with **jQuery**.
+5. [NodeJS](https://nodejs.org).
 
 ### Run locally
 
@@ -37,7 +37,7 @@ Install [NodeJS](https://nodejs.org).
 
 Clone this project or download it. It's recommended to install [GitHub desktop](https://desktop.github.com/). To clone it via command line, use the following (**Terminal** on MacOSX/Linux, **Git Shell** on Windows):
 
-    git clone https://github.com/autodesk-forge/bim360appstore-viewer-nodejs-visual.reports
+    git clone https://github.com/autodesk-forge/forge-bim360reports
 
 To run it, install the required packages, set the enviroment variables with your client ID & secret and finally start it. Via command line, navigate to the folder where this repository was cloned and use the following:
 
@@ -97,7 +97,6 @@ Documentation:
 Tutorials:
 
 - [View BIM 360 Models](http://learnforge.autodesk.io/#/tutorials/viewhubmodels)
-- [Retrieve Issues](https://developer.autodesk.com/en/docs/bim360/v1/tutorials/retrieve-issues)
 
 Blogs:
 

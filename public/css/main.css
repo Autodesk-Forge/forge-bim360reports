@@ -1,0 +1,43 @@
+﻿html, body {
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fill {
+  height: calc(100vh - 80px);
+}
+
+.transition-width {
+  transition: width 1s ease-in-out;
+}
+
+body {
+  padding-top: 60px;
+  /* space for the top nav bar */
+}
+
+#userHubs {
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 115px);
+}
+
+#forgeViewer {
+  width: 100%;
+}
+
+#dashboard {
+  overflow: auto;
+  height: calc(100vh - 80px);
+}
+
+.dashboardPanel {
+  width: 100%;
+  padding: 3%;
+  display: block;
+}
+
+.dashboardTitle {
+  margin-bottom: 10px;
+}

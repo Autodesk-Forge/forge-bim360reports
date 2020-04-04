@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development 
+// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -16,23 +16,22 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
 
-'use strict'; // http://www.w3schools.com/js/js_strict.asp
+const express = require('express');
+const { UserProfileApi } = require('forge-apis');
 
-module.exports = {
+const { OAuth } = require('./common/oauth');
 
-  // Autodesk Forge configuration
+let router = express.Router();
 
-  // this this callback URL when creating your client ID and secret
-  callbackURL: process.env.FORGE_CALLBACK_URL || 'http://localhost:3000/api/forge/callback/oauth',
+router.get('/user/profile', async (req, res) => {
+    const oauth = new OAuth(req.session);
+    const internalToken = await oauth.getInternalToken();
+    const user = new UserProfileApi();
+    const profile = await user.getUserProfile(oauth.getClient(), internalToken);
+    res.json({
+        name: profile.body.firstName + ' ' + profile.body.lastName,
+        picture: profile.body.profileImages.sizeX40
+    });
+});
 
-  // set enviroment variables or hard-code here
-  credentials: {
-    client_id: process.env.FORGE_CLIENT_ID || '<replace with your consumer key>',
-    client_secret: process.env.FORGE_CLIENT_SECRET || '<replace with your consumer secret>',
-  },
-
-  // Required scopes for your application on server-side
-  scopeInternal: ['data:read','data:write','data:create','data:search'],
-  // Required scope of the token sent to the client
-  scopePublic: ['viewables:read'],
-};
+module.exports = router;

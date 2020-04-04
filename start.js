@@ -16,15 +16,30 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
 
-'use strict';
+const path = require('path');
+const express = require('express');
+const cookieSession = require('cookie-session');
 
-var app = require('./server/server');
+const PORT = process.env.PORT || 3000;
+const config = require('./config');
+if (config.credentials.client_id == null || config.credentials.client_secret == null) {
+    console.error('Missing FORGE_CLIENT_ID or FORGE_CLIENT_SECRET env. variables.');
+    return;
+}
 
-// start server
-var server = app.listen(app.get('port'), function () {
-  if (process.env.FORGE_CLIENT_ID == null || process.env.FORGE_CLIENT_SECRET == null)
-    console.log('*****************\nWARNING: Forge Client ID & Client Secret not defined as environment variables.\n*****************');
-
-  console.log('Starting at ' + (new Date()).toString());
-  console.log('Server listening on port ' + server.address().port);
+let app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieSession({
+    name: 'forge_session',
+    keys: ['forge_secure_key'],
+    maxAge: 14 * 24 * 60 * 60 * 1000 // 14 days, same as refresh token
+}));
+app.use(express.json({ limit: '50mb' }));
+app.use('/api/forge', require('./routes/oauth'));
+app.use('/api/forge', require('./routes/datamanagement'));
+app.use('/api/forge', require('./routes/user'));
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(err.statusCode).json(err);
 });
+app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`); });
