@@ -102,8 +102,12 @@ async function getProjects(hubId, oauthClient, credentials, res) {
                 projectType = 'a360projects';
                 break;
             case 'projects:autodesk.bim360:Project':
-                projectType = 'bim360projects';
-                break;
+                if(project.attributes.extension.data.projectType == 'ACC'){
+                    projectType = 'accprojects';  
+                }else{
+                    projectType = 'bim360projects'; 
+                }
+                break; 
         }
         return createTreeNode(
             project.links.self.href,

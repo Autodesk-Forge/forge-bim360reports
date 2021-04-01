@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node start.js"
+    "start": "node start.js",
+    "dev":"nodemon ./start.js"
   },
   "author": "",
   "license": "MIT",

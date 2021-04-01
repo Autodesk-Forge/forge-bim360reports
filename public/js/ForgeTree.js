@@ -85,11 +85,13 @@ function prepareUserHubsTree() {
     'types': {
       'default': { 'icon': 'glyphicon glyphicon-question-sign' },
       '#': { 'icon': 'glyphicon glyphicon-user' },
-      'hubs': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360hub.png' },
-      'personalHub': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360hub.png' },
-      'bim360Hubs': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/bim360hub.png' },
-      'bim360projects': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/bim360project.png' },
-      'a360projects': { 'icon': 'https://github.com/Autodesk-Forge/bim360appstore-data.management-nodejs-transfer.storage/raw/master/www/img/a360project.png' },
+      'hubs': { 'icon': './img/a360hub.png' },
+      'personalHub': { 'icon': './img/a360hub.png' },
+      'bim360Hubs': { 'icon': './img/bim360hub.png' },
+      'bim360projects': { 'icon': './img/bim360project.png' },
+      'a360projects': { 'icon': './img/a360project.png' },
+      'accprojects': { 'icon': './img/accproject.svg' },
+
       'folders': { 'icon': 'glyphicon glyphicon-folder-open' },
       'items': { 'icon': 'glyphicon glyphicon-file' },
       'bim360documents': { 'icon': 'glyphicon glyphicon-file' },
