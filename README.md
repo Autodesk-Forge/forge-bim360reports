@@ -3,9 +3,10 @@
 ![Platforms](https://img.shields.io/badge/platform-Windows|MacOS-lightgray.svg)
 [![License](http://img.shields.io/:license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
-[![oAuth2](https://img.shields.io/badge/oAuth2-v1-green.svg)](http://developer.autodesk.com/)
-[![Data-Management](https://img.shields.io/badge/Data%20Management-v1-green.svg)](http://developer.autodesk.com/)
-[![Viewer](https://img.shields.io/badge/Viewer-v6-green.svg)](http://developer.autodesk.com/)
+[![oAuth2](https://img.shields.io/badge/oAuth2-v1-green.svg)](https://forge.autodesk.com/en/docs/oauth/v2/developers_guide/overview/)
+[![Data-Management](https://img.shields.io/badge/Data%20Management-v1-green.svg)](https://forge.autodesk.com/api/data-management-cover-page/)
+[![Model-Derivative](https://img.shields.io/badge/Model%20Derivative-v2-red.svg)](https://forge.autodesk.com/api/model-derivative-cover-page/)
+[![Viewer](https://img.shields.io/badge/Viewer-v7-blue.svg)](https://forge.autodesk.com/api/viewer-cover-page/)
 
 This sample application demonstrates how to extract properties of BIM360 or ACC models from elements and generate a project dashboard. Also shows a nested view with 2d views of the model (if available).
 
