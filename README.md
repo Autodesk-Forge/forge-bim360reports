@@ -1,4 +1,4 @@
-# Visual Reports of BIM360 or Autodesk Construction Cloud (ACC) Models
+# Visual Reports of Models
 
 ![Platforms](https://img.shields.io/badge/platform-Windows|MacOS-lightgray.svg)
 [![License](http://img.shields.io/:license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
@@ -8,17 +8,21 @@
 [![Model-Derivative](https://img.shields.io/badge/Model%20Derivative-v2-red.svg)](https://forge.autodesk.com/api/model-derivative-cover-page/)
 [![Viewer](https://img.shields.io/badge/Viewer-v7-blue.svg)](https://forge.autodesk.com/api/viewer-cover-page/)
 
-This sample application demonstrates how to extract properties of BIM360 or ACC models from elements and generate a project dashboard. Also shows a nested view with 2d views of the model (if available).
-
-This sample is based on the Learn [Forge tutorials](https://learnforge.autodesk.io/#/tutorials/viewhubmodels) in the section *View BIM 360 models* and *Dashboard*. The original implementation was based on [Jim Awe - LMVNavTest](https://github.com/JimAwe/LmvNavTest) (Depracated).
-
 ## Thumbnail
 
 ![thumbnail](/thumbnail.png)
 
+# Description
+
+This sample application demonstrates how to extract models properties of Autodesk360/BIM360/Autodesk Construction Cloud (ACC) and generate a project dashboard. Also shows a nested view with 2d views of the model (if available). In the project tree of this sample, Autodesk360, BIM360 and ACC project are listed with different icons.
+
+![thumbnail](/project_icon.png)
+
+This sample is based on the Learn [Forge tutorials](https://learnforge.autodesk.io/#/tutorials/viewhubmodels) in the section *View BIM 360 models* and *Dashboard*. The original implementation was based on [Jim Awe - LMVNavTest](https://github.com/JimAwe/LmvNavTest) (Depracated).
+
 ## Live version
 
-[https://bim360reports.autodesk.io](https://bim360reports.autodesk.io/)
+[https://visualreports.autodesk.io](https://visualreports.autodesk.io/)
 
 
 # Setup
@@ -80,9 +84,9 @@ For local development/testing, consider use [nodemon](https://www.npmjs.com/pack
 
     sudo npm install -g nodemon
 
-Then, execute the scripts in commandline:
+Then, instead of <b>npm run dev</b>, use the following:
 
-    npm run dev
+    npm run nodemon
 
 Which executes **nodemon ./start.js**.  The flag option **--ignore www/** indicates that the app should not restart if files under specific folder (such as **www**) are modified.
 
@@ -92,7 +96,7 @@ Documentation:
 
 - [BIM 360 or ACC API Provisioning](https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps)
 - [Data Management API](https://developer.autodesk.com/en/docs/data/v2/overview/)
-- [Viewer](https://developer.autodesk.com/en/docs/viewer/v6)
+- [Viewer](https://developer.autodesk.com/en/docs/viewer/v7)
 
 Tutorials:
 
@@ -109,7 +113,9 @@ Blogs:
 
 1. **Cannot see my BIM 360 or ACC projects**: Make sure to provision the Forge App Client ID within the BIM 360 or ACC Account, [learn more here](https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps). This requires the Account Admin permission.
 
-2. **error setting certificate verify locations** error: may happen on Windows, use the following: `git config --global http.sslverify "false"`
+2. **Cannot load Autodesk360 model**: In Autodesk360, the model is not translated by default until the end user loads the model one time in Autodesk360, or the developer posts job to translate. 
+
+3. **error setting certificate verify locations** error: may happen on Windows, use the following: `git config --global http.sslverify "false"`
 
 ## License
 
