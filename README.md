@@ -16,7 +16,7 @@
 
 This sample application demonstrates how to extract models properties of Autodesk360/BIM360/Autodesk Construction Cloud (ACC) and generate a project dashboard. Also shows a nested view with 2d views of the model (if available). In the project tree of this sample, Autodesk360, BIM360 and ACC project are listed with different icons.
 
-![thumbnail](/project_icon.png)
+   <p align="center"><img src="/project_icon.png" width="200" ></p> 
 
 This sample is based on the Learn [Forge tutorials](https://learnforge.autodesk.io/#/tutorials/viewhubmodels) in the section *View BIM 360 models* and *Dashboard*. The original implementation was based on [Jim Awe - LMVNavTest](https://github.com/JimAwe/LmvNavTest) (Depracated).
 
