@@ -29,12 +29,13 @@ body {
 
 #dashboard {
   overflow: auto;
-  height: calc(100vh - 80px);
+  height: calc(94vh);
 }
 
 .dashboardPanel {
   width: 100%;
-  padding: 3%;
+  height: calc(44vh);
+  padding: 4%;
   display: block;
 }
 
